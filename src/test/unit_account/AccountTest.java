@@ -26,7 +26,7 @@ public class AccountTest {
     }
     @Test
     public void testLogin() {
-        assertEquals(atc.isLogin(), "False");
+        assertFalse(atc.isLogin());
     }
 
     @Test
