@@ -1,10 +1,10 @@
 package main;
 
 public abstract class Account {
-    private int salary;
-    private int balance;
-    private int role;
-    private int login;
+    private String salary;
+    private String balance;
+    private String role;
+    private boolean login;
 
     public String checkBalance(String input) {
         String result = input;
