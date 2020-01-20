@@ -3,28 +3,55 @@ package test.unit_account;
 import main.Account;
 
 public class AccountTestClass extends Account {
+
+
+    public AccountTestClass(String salary, String balance, String role) {
+        super(salary, balance, role);
+    }
+
+
     @Override
-    public String checkBalance(String input) {
-        return super.checkBalance(input);
+    public String getSalary() {
+        return super.getSalary();
     }
 
     @Override
-    public String checkSalary(String input) {
-        return super.checkSalary(input);
+    public void setSalary(String salary) {
+        super.setSalary(salary);
     }
 
     @Override
-    public String checkRole(String input) {
-        return super.checkRole(input);
+    public String getBalance() {
+        return super.getBalance();
     }
 
     @Override
-    public String login(String input) {
-        return super.login(input);
+    public void setBalance(String balance) {
+        super.setBalance(balance);
     }
 
     @Override
-    public String removeAccount(String input) {
-        return super.removeAccount(input);
+    public String getRole() {
+        return super.getRole();
+    }
+
+    @Override
+    public void setRole(String role) {
+        super.setRole(role);
+    }
+
+    @Override
+    public boolean isLogin() {
+        return super.isLogin();
+    }
+
+    @Override
+    public void setLogin(boolean login) {
+        super.setLogin(login);
+    }
+
+    @Override
+    public Account createAccount(String salary, String balance, String role) {
+        return super.createAccount("100", "100", "User");
     }
 }
