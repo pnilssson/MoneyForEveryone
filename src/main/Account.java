@@ -2,15 +2,16 @@ package main;
 
 public abstract class Account {
     private int accountId;
-    private String salary;
-    private String balance;
-    private String role;
+    private static int idCounter = -1;
+    private int salary;
+    private int balance;
+    private Enum<Role> role;
     private boolean login;
     private String username;
     private String password;
 
-    public Account(int accountId, String salary, String balance, String role, String username, String password) {
-        this.accountId = accountId;
+    public Account(int salary, int balance, Enum<Role> role, String username, String password) {
+        this.accountId = idCounter++;
         this.salary = salary;
         this.balance = balance;
         this.role = role;
@@ -27,27 +28,27 @@ public abstract class Account {
         this.accountId = accountId;
     }
 
-    public String getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
-    public String getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 
-    public String getRole() {
+    public Enum<Role> getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Enum<Role> role) {
         this.role = role;
     }
 
