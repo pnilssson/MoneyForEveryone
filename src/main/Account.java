@@ -86,10 +86,4 @@ public abstract class Account {
     public void setPasswordAnswer(String passwordAnswer) {
         this.passwordAnswer = passwordAnswer;
     }
-
-    public Account createAccount(String salary, String balance, String role) {
-
-        return null;
-    }
-
 }

@@ -12,6 +12,6 @@ public class CreateUserTest {
 
     @Test
     public void test2() {
-        assertTrue(Main.testTest(5) == 23);
+        assertTrue(Main.testTest(5) == 25);
     }
 }

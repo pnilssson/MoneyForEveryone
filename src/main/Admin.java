@@ -1,10 +1,7 @@
-package test.unit_account;
+package main;
 
-import main.Account;
-
-public class AccountTestClass extends Account {
-
-    public AccountTestClass(String username, String password, String passwordHint, String passwordAnswer, String salary, String balance, String role) {
+public class Admin extends Account {
+    public Admin(String username, String password, String passwordHint, String passwordAnswer, String salary, String balance, String role) {
         super(username, password, passwordHint, passwordAnswer, salary, balance, role);
     }
 
