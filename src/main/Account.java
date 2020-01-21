@@ -2,25 +2,29 @@ package main;
 
 public abstract class Account {
     private int accountId;
-    private static int accountIdCounter = -1;
     private String salary;
     private String balance;
     private String role;
-    private boolean login = false;
+    private boolean login;
     private String username;
     private String password;
-    private String passwordHint;
-    private String passwordAnswer;
 
-    public Account(String username, String password, String passwordHint, String passwordAnswer, String salary, String balance, String role) {
-        this.accountId = accountIdCounter++;
-        this.username = username;
-        this.password = password;
-        this.passwordHint = passwordHint;
-        this.passwordAnswer = passwordAnswer;
+    public Account(int accountId, String salary, String balance, String role, String username, String password) {
+        this.accountId = accountId;
         this.salary = salary;
         this.balance = balance;
         this.role = role;
+        this.login = false;
+        this.username = username;
+        this.password = password;
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public String getSalary() {
@@ -69,21 +73,5 @@ public abstract class Account {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getPasswordHint() {
-        return passwordHint;
-    }
-
-    public void setPasswordHint(String passwordHint) {
-        this.passwordHint = passwordHint;
-    }
-
-    public String getPasswordAnswer() {
-        return passwordAnswer;
-    }
-
-    public void setPasswordAnswer(String passwordAnswer) {
-        this.passwordAnswer = passwordAnswer;
     }
 }
