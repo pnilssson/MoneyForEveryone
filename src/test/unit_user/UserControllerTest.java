@@ -6,5 +6,15 @@ import main.user.UserModel;
 public class UserControllerTest {
     UserModel user = new UserModel(1000, 0, Role.USER, "testuser", "testpassword");
 
+    public void testRequestForNewRole() {
 
+    }
+
+    public void testRequestForNewSalary() {
+
+    }
+
+    public void testRemoveAccount() {
+
+    }
 }

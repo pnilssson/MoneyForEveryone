@@ -23,28 +23,28 @@ public class UserController {
                 userView.printUserRole(user);
                 break;
             case "4":
-                requestForNewRole();
+                requestForNewRole(user);
                 break;
             case "5":
-                requestForNewSalary();
+                requestForNewSalary(user);
                 break;
             case "6":
-                removeAccount();
+                removeAccount(user);
                 break;
             default:
                 break;
         }
     }
 
-    public void requestForNewRole() {
+    public void requestForNewRole(UserModel user) {
 
     }
 
-    public void requestForNewSalary() {
+    public void requestForNewSalary(UserModel user) {
 
     }
 
-    public void removeAccount() {
+    public void removeAccount(UserModel user) {
 
     }
 }
