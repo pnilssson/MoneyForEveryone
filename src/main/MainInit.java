@@ -6,7 +6,7 @@ import main.account.Admin;
 public class MainInit {
 
     public static void mainInit() {
-        Admin admin = new Admin(0, 0, Role.ADMIN, "admin1", "admin1234");
+        Admin admin = new Admin(Role.ADMIN, "admin1", "admin1234");
         AccountList.accountArrayList.add(admin);
 
         Menu menu = new Menu();

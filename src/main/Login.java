@@ -9,30 +9,28 @@ public class Login {
     Scanner scan = new Scanner(System.in);
 
     public void loginMenu() {
-        String username = "";
-        String password = "";
         boolean loggedIn = false;
-
         while (!loggedIn) {
-            boolean usernameIncorrect = true;
-            boolean passwordIncorrect = true;
 
-            while (usernameIncorrect) {
-                username = usernameInput();
-                usernameIncorrect = checkUsernameInput(username);
+            String username = "";
+            String password = "";
+
+            while (username.equals("")) {
+                username = checkUsernameInput(usernameInput());
             }
-            while (passwordIncorrect) {
-                password = passwordInput();
-                passwordIncorrect = checkPasswordInput(password);
+            while (password.equals("")) {
+                password = checkPasswordInput(passwordInput());
             }
 
             Account acc = login(username, password);
+
             try {
                 acc.setLogin(true);
                 loggedIn = acc.isLogin();
             } catch (NullPointerException ne) {
                 loggedIn = false;
             }
+
             if(loggedIn) {
                 System.out.println("Logged in");
             } else {
@@ -64,11 +62,19 @@ public class Login {
         return scan.next().toLowerCase();
     }
 
-    public boolean checkUsernameInput(String username) {
-        return false;
+    public String checkUsernameInput(String username) {
+        if(username.length() < 6) {
+            return "";
+        }
+
+        return username;
     }
 
-    public boolean checkPasswordInput(String password) {
-        return false;
+    public String checkPasswordInput(String password) {
+        if(password.length() < 6) {
+            return "";
+        }
+
+        return password;
     }
 }
