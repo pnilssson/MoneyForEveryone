@@ -1,6 +1,7 @@
 package test.unit_user;
 
 import main.Role;
+import main.account.AccountList;
 import main.user.UserModel;
 
 public class UserControllerTest {
@@ -15,6 +16,7 @@ public class UserControllerTest {
     }
 
     public void testRemoveAccount() {
+        AccountList.accountArrayList.add(user);
 
     }
 }

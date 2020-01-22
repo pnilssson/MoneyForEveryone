@@ -12,4 +12,20 @@ public class UserModel extends Account {
         this.salary = salary;
         this.balance = balance;
     }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
 }

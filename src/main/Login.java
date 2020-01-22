@@ -18,14 +18,10 @@ public class Login {
             boolean passwordIncorrect = true;
 
             while (usernameIncorrect) {
-                System.out.println("Username: ");
-                username = scan.next().toLowerCase();
-                usernameIncorrect = usernameInput(username);
+                usernameIncorrect = checkUsernameInput(usernameInput());
             }
             while (passwordIncorrect) {
-                System.out.println("Password: ");
-                password = scan.next();
-                passwordIncorrect = passwordInput(password);
+                passwordIncorrect = checkPasswordInput(passwordInput());
             }
 
             Account acc = login(username, password);
@@ -56,11 +52,21 @@ public class Login {
         return null;
     }
 
-    public boolean usernameInput(String username) {
+    public String usernameInput() {
+        System.out.println("Username: ");
+        return scan.next().toLowerCase();
+    }
+
+    public String passwordInput() {
+        System.out.println("Password: ");
+        return scan.next().toLowerCase();
+    }
+
+    public boolean checkUsernameInput(String username) {
         return false;
     }
 
-    public boolean passwordInput(String password) {
+    public boolean checkPasswordInput(String password) {
         return false;
     }
 }
