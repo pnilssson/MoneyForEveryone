@@ -2,7 +2,7 @@ package test.unit_account;
 
 import main.Menu;
 import main.Role;
-import main.User;
+import main.account.User;
 import org.junit.Assert;
 import org.junit.Test;
 

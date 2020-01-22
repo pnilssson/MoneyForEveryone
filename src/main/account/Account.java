@@ -1,4 +1,6 @@
-package main;
+package main.account;
+
+import main.Role;
 
 public abstract class Account {
     private int accountId;
