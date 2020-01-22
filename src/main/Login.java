@@ -18,10 +18,12 @@ public class Login {
             boolean passwordIncorrect = true;
 
             while (usernameIncorrect) {
-                usernameIncorrect = checkUsernameInput(usernameInput());
+                username = usernameInput();
+                usernameIncorrect = checkUsernameInput(username);
             }
             while (passwordIncorrect) {
-                passwordIncorrect = checkPasswordInput(passwordInput());
+                password = passwordInput();
+                passwordIncorrect = checkPasswordInput(password);
             }
 
             Account acc = login(username, password);
