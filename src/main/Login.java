@@ -11,9 +11,9 @@ public class Login {
     public void loginMenu() {
         String username = "";
         String password = "";
-        String loggedIn = "";
+        boolean loggedIn = false;
 
-        while (!loggedIn.equals("Logged in")) {
+        while (!loggedIn) {
             boolean usernameIncorrect = true;
             boolean passwordIncorrect = true;
 
@@ -28,27 +28,32 @@ public class Login {
                 passwordIncorrect = passwordInput(password);
             }
 
-            loggedIn = login(username, password);
-            System.out.println(loggedIn);
+            Account acc = login(username, password);
+            try {
+                acc.setLogin(true);
+                loggedIn = acc.isLogin();
+            } catch (NullPointerException ne) {
+                loggedIn = false;
+            }
+            if(loggedIn) {
+                System.out.println("Logged in");
+            } else {
+                System.out.println("Username or password is incorrect");
+            }
         }
-        System.out.println("Logged in");
+
     }
 
-    public String login(String username, String password) {
+    public Account login(String username, String password) {
         for(Account acc : AccountList.accountArrayList) {
             if(acc.getUsername().equals(username)) {
 
                 if(acc.getPassword().equals(password)) {
-                    return "Logged in";
-                } else {
-                    return "Username or password is incorrect";
+                    return acc;
                 }
-
-            } else {
-                return "Username or password is incorrect";
             }
         }
-        return "";
+        return null;
     }
 
     public boolean usernameInput(String username) {
