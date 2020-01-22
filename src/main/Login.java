@@ -17,6 +17,13 @@ public class Login {
 
             Account acc = login(username, password);
 
+            if(acc != null) {
+                loggedIn = true;
+                System.out.println("Logged in");
+            } else {
+                System.out.println("Username or password is incorrect");
+            }
+            /*
             try {
                 acc.setLogin(true);
                 loggedIn = acc.isLogin();
@@ -24,13 +31,10 @@ public class Login {
                 loggedIn = false;
             }
 
-            if(loggedIn) {
-                System.out.println("Logged in");
-            } else {
-                System.out.println("Username or password is incorrect");
-            }
-        }
+             */
 
+
+        }
     }
 
     public Account login(String username, String password) {
