@@ -24,15 +24,15 @@ public class UserView {
     }
 
     public void printUserBalance(UserModel user) {
-        System.out.print("Your balance is: " + user.getBalance());
+        System.out.println("Your balance is: " + user.getBalance());
     }
 
     public void printUserSalary(UserModel user) {
-        System.out.print("Your current salary is: " + user.getSalary());
+        System.out.println("Your current salary is: " + user.getSalary());
     }
 
     public void printUserRole(UserModel user) {
-        System.out.print("Your current role is: " + user.getRole());
+        System.out.println("Your current role is: " + user.getRole());
     }
 
     public void printUserMenu(UserModel user) {

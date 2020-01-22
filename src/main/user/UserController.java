@@ -4,7 +4,11 @@ public class UserController {
     UserView userView = new UserView();
 
     public void initUserMenu(UserModel user) {
-        callChosenMethod(userView.userMenuInput(user), user);
+        String quit;
+        do {
+            quit = userView.userMenuInput(user);
+            callChosenMethod(quit, user);
+        } while(!quit.equals("0"));
     }
 
     public void callChosenMethod(String menuChoice, UserModel user) {
@@ -19,21 +23,24 @@ public class UserController {
                 userView.printUserRole(user);
                 break;
             case "4":
+                requestForNewRole();
                 break;
             case "5":
+                requestForNewSalary();
                 break;
             case "6":
+                removeAccount();
                 break;
             default:
                 break;
         }
     }
 
-    public void askForNewRole() {
+    public void requestForNewRole() {
 
     }
 
-    public void askForNewSalary() {
+    public void requestForNewSalary() {
 
     }
 
