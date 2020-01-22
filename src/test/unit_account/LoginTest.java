@@ -14,4 +14,14 @@ public class LoginTest {
         Assert.assertEquals("Menu incorrect input check", true, menu.menuChoice("1"));
         UserModel user = new UserModel(10, 0, Role.USER, "user1", "qwerty");
     }
+
+    @Test
+    public void testUsernameInput() {
+
+    }
+
+    @Test
+    public void testPasswordInput() {
+
+    }
 }

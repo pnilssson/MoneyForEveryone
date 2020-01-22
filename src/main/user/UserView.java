@@ -35,6 +35,10 @@ public class UserView {
         System.out.println("Your current role is: " + user.getRole());
     }
 
+    public void printRemoveAccountConditions() {
+        System.out.println("Please confirm deletion of account by entering username and password");
+    }
+
     public void printUserMenu(UserModel user) {
         System.out.println("Welcome " + user.getUsername() + "!");
         System.out.println("What would you like to do?");
