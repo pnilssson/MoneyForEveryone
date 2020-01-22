@@ -12,8 +12,8 @@ public class Login {
         boolean loggedIn = false;
         while (!loggedIn) {
 
-            String username = checkUsernameInput(usernameInput());
-            String password = checkPasswordInput(passwordInput());
+            String username = usernameInput();
+            String password = passwordInput();
 
             Account acc = login(username, password);
 
@@ -53,21 +53,5 @@ public class Login {
     public String passwordInput() {
         System.out.println("Password: ");
         return scan.next().toLowerCase();
-    }
-
-    public String checkUsernameInput(String username) {
-        if(username.length() < 6) {
-            return "";
-        }
-
-        return username;
-    }
-
-    public String checkPasswordInput(String password) {
-        if(password.length() < 6) {
-            return "";
-        }
-
-        return password;
     }
 }
