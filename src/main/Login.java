@@ -12,15 +12,8 @@ public class Login {
         boolean loggedIn = false;
         while (!loggedIn) {
 
-            String username = "";
-            String password = "";
-
-            while (username.equals("")) {
-                username = checkUsernameInput(usernameInput());
-            }
-            while (password.equals("")) {
-                password = checkPasswordInput(passwordInput());
-            }
+            String username = checkUsernameInput(usernameInput());
+            String password = checkPasswordInput(passwordInput());
 
             Account acc = login(username, password);
 
