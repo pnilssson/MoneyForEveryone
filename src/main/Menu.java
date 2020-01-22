@@ -15,8 +15,8 @@ public class Menu {
         }
     }
 
-    public Boolean menuChoice(String input) {
-        switch (input) {
+    public boolean menuChoice(String menuChoice) {
+        switch (menuChoice) {
             case "1" :
                 Login login = new Login();
                 login.loginMenu();

@@ -2,7 +2,7 @@ package test.unit_account;
 
 import main.Menu;
 import main.Role;
-import main.account.User;
+import main.user.UserModel;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,6 +12,6 @@ public class LoginTest {
     @Test
     public void loginTest() {
         Assert.assertEquals("Menu incorrect input check", true, menu.menuChoice("1"));
-        User user = new User(10, 0, Role.USER, "user1", "qwerty");
+        UserModel user = new UserModel(10, 0, Role.USER, "user1", "qwerty");
     }
 }
