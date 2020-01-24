@@ -39,6 +39,18 @@ public class UserView {
         System.out.println("Please confirm deletion of account by entering username and password");
     }
 
+
+    public void printNewRequestedRole() {
+        System.out.println("What role would you like to request?");
+        System.out.println("1) Developer");
+        System.out.println("2) HR");
+        System.out.println("3) CEO");
+    }
+
+    public void printNewRequestedNewSalary() {
+        System.out.println("Enter the amount of salary you want to request: ");
+    }
+
     public void printUserMenu(UserModel user) {
         System.out.println("Welcome " + user.getUsername() + "!");
         System.out.println("What would you like to do?");

@@ -1,6 +1,8 @@
 package main.user;
 
+import main.GetInputs;
 import main.Login;
+import main.Role;
 import main.account.AccountList;
 
 import java.util.Scanner;
@@ -8,6 +10,7 @@ import java.util.Scanner;
 public class UserController {
     Scanner scan = new Scanner(System.in);
     UserView userView = new UserView();
+    GetInputs getInput = new GetInputs();
 
     public void initUserMenu(UserModel user) {
         String quit;
@@ -29,10 +32,10 @@ public class UserController {
                 userView.printUserRole(user);
                 break;
             case "4":
-                requestForNewRole(user);
+                requestNewRole(user);
                 break;
             case "5":
-                requestForNewSalary(user);
+                requestNewSalary(user);
                 break;
             case "6":
                 removeAccount(user);
@@ -42,12 +45,29 @@ public class UserController {
         }
     }
 
-    public void requestForNewRole(UserModel user) {
-
+    public void requestNewRole(UserModel user) {
+        Enum<Role> newRole;
+        Enum<Role> currentRole = user.getRole();
+        userView.printNewRequestedRole();
+        newRole = getInput.getRoleFromInput(user);
+        if(currentRole != newRole) {
+            submitRoleChange(user, newRole);
+        }
     }
 
-    public void requestForNewSalary(UserModel user) {
+    public void submitRoleChange(UserModel user, Enum<Role> newRole) {
+        user.setRequestedNewRole(newRole);
+    }
 
+    public void requestNewSalary(UserModel user) {
+        int newSalary = 0;
+        userView.printNewRequestedNewSalary();
+        newSalary = getInput.getIntFromInput();
+        submitSalaryChange(user, newSalary);
+    }
+
+    public void submitSalaryChange(UserModel user, int newSalary) {
+        user.setRequestedSalary(newSalary);
     }
 
     public void removeAccount(UserModel user) {

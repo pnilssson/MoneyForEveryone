@@ -13,11 +13,15 @@ public class UserControllerTest {
 
     @Test
     public void testRequestForNewRole() {
-
+        Assert.assertEquals("User role is incorrect", Role.USER, user.getRole());
+        userController.submitRoleChange(user, Role.DEVELOPER);
+        Assert.assertEquals("Requested role not changed", Role.DEVELOPER, user.getRequestedNewRole());
     }
     @Test
     public void testRequestForNewSalary() {
-
+        Assert.assertEquals("User salary is incorrect", 1000, user.getSalary());
+        userController.submitSalaryChange(user, 9999);
+        Assert.assertEquals("Requested salary not changed", 9999, user.getRequestedSalary());
     }
 
     @Test
