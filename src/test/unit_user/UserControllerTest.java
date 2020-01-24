@@ -24,7 +24,7 @@ public class UserControllerTest {
     public void testRemoveAccount() {
         AccountList.accountArrayList.add(user);
         Assert.assertTrue("User not added to account list", AccountList.accountArrayList.contains(user));
-        //userController.removeAccount(user,"testuser", "testpassword");
+        userController.executeAccountDeletion(user,"testuser", "testpassword");
         Assert.assertFalse("User not removed from account list", AccountList.accountArrayList.contains(user));
     }
 }

@@ -3,7 +3,10 @@ package main.user;
 import main.Login;
 import main.account.AccountList;
 
+import java.util.Scanner;
+
 public class UserController {
+    Scanner scan = new Scanner(System.in);
     UserView userView = new UserView();
 
     public void initUserMenu(UserModel user) {
@@ -50,8 +53,12 @@ public class UserController {
     public void removeAccount(UserModel user) {
         Login login = new Login();
         userView.printRemoveAccountConditions();
-        String username = login.usernameInput();
-        String password = login.passwordInput();
+        String username = login.usernameInput(scan.next());
+        String password = login.passwordInput(scan.next());
+        executeAccountDeletion(user, username, password);
+    }
+
+    public void executeAccountDeletion(UserModel user, String username, String password) {
         if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
             AccountList.accountArrayList.remove(user);
         } else {

@@ -11,36 +11,22 @@ public class Login {
     public void loginMenu() {
         boolean loggedIn = false;
         while (!loggedIn) {
-
-            String username = usernameInput();
-            String password = passwordInput();
+            String username = usernameInput(scan.next());
+            String password = passwordInput(scan.next());
 
             Account acc = login(username, password);
-
             if(acc != null) {
                 loggedIn = true;
                 System.out.println("Logged in");
             } else {
                 System.out.println("Username or password is incorrect");
             }
-            /*
-            try {
-                acc.setLogin(true);
-                loggedIn = acc.isLogin();
-            } catch (NullPointerException ne) {
-                loggedIn = false;
-            }
-
-             */
-
-
         }
     }
 
     public Account login(String username, String password) {
         for(Account acc : AccountList.accountArrayList) {
             if(acc.getUsername().equals(username)) {
-
                 if(acc.getPassword().equals(password)) {
                     return acc;
                 }
@@ -49,13 +35,13 @@ public class Login {
         return null;
     }
 
-    public String usernameInput() {
+    public String usernameInput(String username) {
         System.out.println("Username: ");
-        return scan.next().toLowerCase();
+        return username.toLowerCase();
     }
 
-    public String passwordInput() {
+    public String passwordInput(String password) {
         System.out.println("Password: ");
-        return scan.next().toLowerCase();
+        return password;
     }
 }
