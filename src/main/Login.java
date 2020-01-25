@@ -11,7 +11,12 @@ public class Login {
     public void loginMenu() {
         boolean loggedIn = false;
         while (!loggedIn) {
+            System.out.println("");
+
+            System.out.println("Username: ");
             String username = usernameInput(scan.next());
+
+            System.out.println("Password: ");
             String password = passwordInput(scan.next());
 
             Account acc = login(username, password);
@@ -36,12 +41,10 @@ public class Login {
     }
 
     public String usernameInput(String username) {
-        System.out.println("Username: ");
         return username.toLowerCase();
     }
 
     public String passwordInput(String password) {
-        System.out.println("Password: ");
         return password;
     }
 }
