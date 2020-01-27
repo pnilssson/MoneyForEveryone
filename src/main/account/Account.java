@@ -1,6 +1,6 @@
 package main.account;
 
-import main.Role;
+import main.enums.*;
 
 public abstract class Account {
     private int accountId;
@@ -8,15 +8,17 @@ public abstract class Account {
     private int salary;
     private int balance;
     private Enum<Role> role;
+    private Enum<Department> department;
     private boolean login;
     private String username;
     private String password;
 
-    public Account(int salary, int balance, Enum<Role> role, String username, String password) {
+    public Account(int salary, int balance, Enum<Role> role, Enum<Department> department, String username, String password) {
         this.accountId = idCounter++;
         this.salary = salary;
         this.balance = balance;
         this.role = role;
+        this.department = department;
         this.login = false;
         this.username = username;
         this.password = password;
@@ -52,6 +54,14 @@ public abstract class Account {
 
     public void setRole(Enum<Role> role) {
         this.role = role;
+    }
+
+    public Enum<Department> getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Enum<Department> department) {
+        this.department = department;
     }
 
     public boolean isLogin() {

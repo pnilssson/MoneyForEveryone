@@ -1,9 +1,7 @@
 package main.user;
 
 import main.GetInputs;
-import main.Login;
-import main.Role;
-import main.account.AccountList;
+import main.enums.Role;
 import main.account.RemoveAccount;
 
 import java.util.Scanner;

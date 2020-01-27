@@ -1,5 +1,6 @@
 package main;
 
+import main.enums.Role;
 import main.user.UserModel;
 
 import java.util.InputMismatchException;
