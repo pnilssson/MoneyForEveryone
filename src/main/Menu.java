@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class Menu {
     public void startMenu() {
-        boolean choice = true;
-        while(choice) {
+        boolean incorrectChoice = true;
+        while(incorrectChoice) {
             System.out.println("1) Login");
             System.out.println("0) Exit");
             System.out.print("Your choice: ");
-            choice = menuChoice(new Scanner(System.in).next());
+            incorrectChoice = menuChoice(new Scanner(System.in).next());
         }
     }
 

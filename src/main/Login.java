@@ -2,6 +2,8 @@ package main;
 
 import main.account.Account;
 import main.account.AccountList;
+import main.admin.AdminController;
+import main.admin.AdminModel;
 import main.user.UserController;
 import main.user.UserModel;
 
@@ -39,10 +41,14 @@ public class Login {
     }
 
     public void launchMainMenu(Account acc) {
-        UserController userController = new UserController();
         if(acc.getRole() != Role.ADMIN) {
+            UserController userController = new UserController();
             UserModel user = (UserModel) acc;
             userController.initUserMenu(user);
+        } else {
+            AdminController adminController = new AdminController();
+            AdminModel admin = (AdminModel) acc;
+            // CALL ADMIN METHOD
         }
     }
 
