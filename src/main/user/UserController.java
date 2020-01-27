@@ -29,7 +29,7 @@ public class UserController {
                 userView.printUserSalary(user);
                 break;
             case "3":
-                userView.printUserRole(user);
+                userView.printUserDepartment(user);
                 break;
             case "4":
                 requestNewDepartment(user);

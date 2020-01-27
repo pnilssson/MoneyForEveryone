@@ -9,7 +9,7 @@ public class UserView {
     public String userMenuInput(UserModel user) {
         String choice;
         System.out.println("Welcome " + user.getUsername() + "!");
-        printUserMenu(user);
+        printUserMenu();
         choice = scan.next();
         while(!correctUserMenuChoice(choice)) {
             System.out.println("Incorrect input");
@@ -32,7 +32,7 @@ public class UserView {
         System.out.println("Your current salary is: " + user.getSalary());
     }
 
-    public void printUserRole(UserModel user) {
+    public void printUserDepartment(UserModel user) {
         System.out.println("Your current role is: " + user.getRole());
     }
 
@@ -53,7 +53,7 @@ public class UserView {
         System.out.println("Enter the amount of salary you want to request: ");
     }
 
-    public void printUserMenu(UserModel user) {
+    public void printUserMenu() {
         System.out.println("What would you like to do?");
         System.out.println("1) Check balance");
         System.out.println("2) Check current salary");

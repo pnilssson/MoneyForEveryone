@@ -11,7 +11,7 @@ public class AdminView {
     public String adminMenuInput(AdminModel admin) {
         String choice;
         System.out.println("Welcome " + admin.getUsername() + "!");
-        printUserMenu(admin);
+        printUserMenu();
         choice = scan.next();
         while(!correctAdminMenuChoice(choice)) {
             System.out.println("Incorrect input");
@@ -26,23 +26,23 @@ public class AdminView {
         return listContainsChoice = Arrays.asList(choices).contains(input);
     }
 
-    public void printUserBalance(UserModel user) {
-        System.out.println("Your balance is: " + user.getBalance());
+    public void printAdminBalance(AdminModel admin) {
+        System.out.println("Your balance is: " + admin.getBalance());
     }
 
-    public void printUserSalary(UserModel user) {
-        System.out.println("Your current salary is: " + user.getSalary());
+    public void printAdminSalary(AdminModel admin) {
+        System.out.println("Your current salary is: " + admin.getSalary());
     }
 
-    public void printUserRole(UserModel user) {
-        System.out.println("Your current role is: " + user.getRole());
+    public void printAdminDepartment(AdminModel admin) {
+        System.out.println("Your current role is: " + admin.getRole());
     }
 
     public void printRemoveAccountConditions() {
         System.out.println("Please confirm deletion of account by entering username and password");
     }
 
-    public void printUserMenu(AdminModel admin) {
+    public void printUserMenu() {
         System.out.println("What would you like to do?");
         System.out.println("1) Check balance");
         System.out.println("2) Check current salary");

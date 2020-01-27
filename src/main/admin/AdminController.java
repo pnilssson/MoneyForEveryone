@@ -3,75 +3,55 @@ package main.admin;
 import main.GetInputs;
 import main.account.RemoveAccount;
 import main.enums.Department;
-import main.user.UserModel;
-import main.user.UserView;
 
 import java.util.Scanner;
 
 public class AdminController {
     private Scanner scan = new Scanner(System.in);
-    private UserView userView = new UserView();
+    private AdminView adminView = new AdminView();
     private GetInputs getInput = new GetInputs();
     private String quit;
 
-    public void initAdminMenu(UserModel user) {
+    public void initAdminMenu(AdminModel admin) {
         do {
-            quit = userView.userMenuInput(user);
-            callChosenMethod(quit, user);
+            quit = adminView.adminMenuInput(admin);
+            callChosenMethod(quit, admin);
         } while(!quit.equals("0"));
     }
 
-    public void callChosenMethod(String menuChoice, UserModel user) {
+    public void callChosenMethod(String menuChoice, AdminModel admin) {
         switch (menuChoice) {
             case "1":
-                userView.printUserBalance(user);
+                adminView.printAdminBalance(admin);
                 break;
             case "2":
-                userView.printUserSalary(user);
+                adminView.printAdminSalary(admin);
                 break;
             case "3":
-                userView.printUserRole(user);
+                adminView.printAdminDepartment(admin);
                 break;
             case "4":
-                requestNewRole(user);
+                checkUserLoginDetails();
                 break;
             case "5":
-                requestNewSalary(user);
+                checkRequestedChanges();
                 break;
             case "6":
-                removeAccount(user);
+                advanceCalendarAndPayOut();
+                break;
+            case "7":
+                createAccount();
+                break;
+            case "8":
+                removeAccount();
                 break;
             default:
                 break;
         }
     }
 
-    public void requestNewRole(UserModel user) {
-        Enum<Department> newDepartment;
-        Enum<Department> currentDepartment = user.getDepartment();
-        userView.printNewRequestedRole();
-        newDepartment = getInput.getDepartmentFromInput(user);
-        if(currentDepartment != newDepartment) {
-            submitDepartmentChange(user, newDepartment);
-        }
-    }
 
-    public void submitDepartmentChange(UserModel user, Enum<Department> newDepartment) {
-        user.setRequestedNewDepartment(newDepartment);
-    }
-
-    public void requestNewSalary(UserModel user) {
-        int newSalary = 0;
-        userView.printNewRequestedNewSalary();
-        newSalary = getInput.getIntFromInput();
-        submitSalaryChange(user, newSalary);
-    }
-
-    public void submitSalaryChange(UserModel user, int newSalary) {
-        user.setRequestedSalary(newSalary);
-    }
-
-    public void removeAccount(UserModel user) {
+    public void removeAccount(AdminModel admin) {
         RemoveAccount removeAccount = new RemoveAccount();
         userView.printRemoveAccountConditions();
         System.out.print("Username: ");
