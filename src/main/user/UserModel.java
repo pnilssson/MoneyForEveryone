@@ -13,6 +13,10 @@ public class UserModel extends Account {
         this.requestedNewDepartment = department;
     }
 
+    public UserModel(String username, String password) {
+        this(0, 0,  Role.USER, Department.DEVELOPER ,username, password);
+    }
+
     public int getRequestedSalary() {
         return requestedSalary;
     }

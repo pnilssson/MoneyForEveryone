@@ -48,7 +48,7 @@ public class UserController {
         Enum<Department> newDepartment;
         Enum<Department> currentDepartment = user.getDepartment();
         userView.printNewRequestedDepartment();
-        newDepartment = getInput.getDepartmentFromInput(user);
+        newDepartment = getInput.getDepartmentFromInput();
         if(currentDepartment != newDepartment) {
             submitDepartmentChange(user, newDepartment);
         }

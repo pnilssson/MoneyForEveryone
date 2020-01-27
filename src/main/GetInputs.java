@@ -22,7 +22,7 @@ public class GetInputs {
         return numberToReturn;
     }
 
-    public Enum<Role> getRoleFromInput(UserModel user){
+    public Enum<Role> getRoleFromInput(){
         int chosenRole = getIntFromInput();
         Enum<Role> roleToReturn;
         switch (chosenRole) {
@@ -34,14 +34,14 @@ public class GetInputs {
                 break;
             default:
                 incorrectInput();
-                roleToReturn = user.getRole();
+                roleToReturn = null;
                 break;
         }
         return roleToReturn;
     }
 
 
-    public Enum<Department> getDepartmentFromInput(UserModel user){
+    public Enum<Department> getDepartmentFromInput(){
         int chosenRole = getIntFromInput();
         Enum<Department> departmentToReturn;
         switch (chosenRole) {
@@ -59,7 +59,7 @@ public class GetInputs {
                 break;
             default:
                 incorrectInput();
-                departmentToReturn = user.getDepartment();
+                departmentToReturn = null;
                 break;
         }
         return departmentToReturn;
