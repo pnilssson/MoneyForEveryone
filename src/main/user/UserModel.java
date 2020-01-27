@@ -28,4 +28,5 @@ public class UserModel extends Account {
     public void setRequestedNewDepartment(Enum<Department> requestedNewDepartment) {
         this.requestedNewDepartment = requestedNewDepartment;
     }
+
 }

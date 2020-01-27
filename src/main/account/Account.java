@@ -87,4 +87,8 @@ public abstract class Account {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void removeAccount(Account acc) {
+        AccountList.accountArrayList.remove(acc);
+    }
 }

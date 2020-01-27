@@ -38,9 +38,11 @@ public class AdminView {
         System.out.println("Your current role is: " + admin.getRole());
     }
 
+/*
     public void printRemoveAccountConditions() {
         System.out.println("Please confirm deletion of account by entering username and password");
     }
+*/
 
     public void printUserMenu() {
         System.out.println("What would you like to do?");

@@ -2,15 +2,14 @@ package main.user;
 
 import main.GetInputs;
 import main.enums.Department;
-import main.enums.Role;
 import main.account.RemoveAccount;
-
 import java.util.Scanner;
 
 public class UserController {
     private Scanner scan = new Scanner(System.in);
     private UserView userView = new UserView();
     private GetInputs getInput = new GetInputs();
+    private RemoveAccount removeAccount = new RemoveAccount();
     private String quit;
 
     public void initUserMenu(UserModel user) {
@@ -38,7 +37,7 @@ public class UserController {
                 requestNewSalary(user);
                 break;
             case "6":
-                removeAccount(user);
+                removeAccount.removeMenu(user);
                 break;
             default:
                 break;
@@ -70,6 +69,7 @@ public class UserController {
         user.setRequestedSalary(newSalary);
     }
 
+    /*
     public void removeAccount(UserModel user) {
         RemoveAccount removeAccount = new RemoveAccount();
         userView.printUserRemoveAccountConditions();
@@ -81,4 +81,6 @@ public class UserController {
             quit = "0";
         }
     }
+   */
+
 }
