@@ -32,7 +32,7 @@ public class UserController {
                 userView.printUserRole(user);
                 break;
             case "4":
-                requestNewRole(user);
+                requestNewDepartment(user);
                 break;
             case "5":
                 requestNewSalary(user);
@@ -45,10 +45,10 @@ public class UserController {
         }
     }
 
-    public void requestNewRole(UserModel user) {
+    public void requestNewDepartment(UserModel user) {
         Enum<Department> newDepartment;
         Enum<Department> currentDepartment = user.getDepartment();
-        userView.printNewRequestedRole();
+        userView.printNewRequestedDepartment();
         newDepartment = getInput.getDepartmentFromInput(user);
         if(currentDepartment != newDepartment) {
             submitDepartmentChange(user, newDepartment);
@@ -72,7 +72,7 @@ public class UserController {
 
     public void removeAccount(UserModel user) {
         RemoveAccount removeAccount = new RemoveAccount();
-        userView.printRemoveAccountConditions();
+        userView.printUserRemoveAccountConditions();
         System.out.print("Username: ");
         String username = getInput.usernameInput(scan.next());
         System.out.print("Password: ");

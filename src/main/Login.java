@@ -43,7 +43,7 @@ public class Login {
     }
 
     public void launchMainMenu(Account acc) {
-        if(acc.getRole() != Role.ADMIN) {
+        if(acc.getRole() == Role.USER) {
             UserController userController = new UserController();
             UserModel user = (UserModel) acc;
             userController.initUserMenu(user);

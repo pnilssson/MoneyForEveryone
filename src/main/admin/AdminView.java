@@ -1,4 +1,58 @@
 package main.admin;
 
+import main.user.UserModel;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class AdminView {
+    Scanner scan = new Scanner(System.in);
+
+    public String adminMenuInput(AdminModel admin) {
+        String choice;
+        System.out.println("Welcome " + admin.getUsername() + "!");
+        printUserMenu(admin);
+        choice = scan.next();
+        while(!correctAdminMenuChoice(choice)) {
+            System.out.println("Incorrect input");
+            choice = scan.next();
+        }
+        return choice;
+    }
+
+    public boolean correctAdminMenuChoice(String input) {
+        String[] choices = {"1", "2", "3", "4", "5", "6", "7", "8", "0"};
+        boolean listContainsChoice;
+        return listContainsChoice = Arrays.asList(choices).contains(input);
+    }
+
+    public void printUserBalance(UserModel user) {
+        System.out.println("Your balance is: " + user.getBalance());
+    }
+
+    public void printUserSalary(UserModel user) {
+        System.out.println("Your current salary is: " + user.getSalary());
+    }
+
+    public void printUserRole(UserModel user) {
+        System.out.println("Your current role is: " + user.getRole());
+    }
+
+    public void printRemoveAccountConditions() {
+        System.out.println("Please confirm deletion of account by entering username and password");
+    }
+
+    public void printUserMenu(AdminModel admin) {
+        System.out.println("What would you like to do?");
+        System.out.println("1) Check balance");
+        System.out.println("2) Check current salary");
+        System.out.println("3) Check current department");
+        System.out.println("4) Check users login details");
+        System.out.println("5) Check requested changes to salary/department");
+        System.out.println("6) Advance to the 25th and payout salaries");
+        System.out.println("7) Create account");
+        System.out.println("8) Delete account");
+        System.out.println("0) Logout");
+        System.out.print("Your choice: ");
+    }
 }
