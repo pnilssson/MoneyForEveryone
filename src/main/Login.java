@@ -2,6 +2,8 @@ package main;
 
 import main.account.Account;
 import main.account.AccountList;
+import main.user.UserController;
+import main.user.UserModel;
 
 import java.util.Scanner;
 
@@ -13,16 +15,16 @@ public class Login {
         while (!loggedIn) {
             System.out.println("");
 
-            System.out.println("Username: ");
+            System.out.print("Username: ");
             String username = usernameInput(scan.next());
 
-            System.out.println("Password: ");
+            System.out.print("Password: ");
             String password = passwordInput(scan.next());
 
             Account acc = login(username, password);
             if(acc != null) {
                 loggedIn = true;
-                System.out.println("Logged in");
+                launchMainMenu(acc);
             } else {
                 System.out.println("Username or password is incorrect");
             }
@@ -38,6 +40,14 @@ public class Login {
             }
         }
         return null;
+    }
+
+    public void launchMainMenu(Account acc) {
+        UserController userController = new UserController();
+        if(acc.getRole() != Role.ADMIN) {
+            UserModel user = (UserModel) acc;
+            userController.initUserMenu(user);
+        }
     }
 
     public String usernameInput(String username) {

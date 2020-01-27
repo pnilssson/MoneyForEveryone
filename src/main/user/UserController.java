@@ -8,12 +8,12 @@ import main.account.AccountList;
 import java.util.Scanner;
 
 public class UserController {
-    Scanner scan = new Scanner(System.in);
-    UserView userView = new UserView();
-    GetInputs getInput = new GetInputs();
+    private Scanner scan = new Scanner(System.in);
+    private UserView userView = new UserView();
+    private GetInputs getInput = new GetInputs();
+    private String quit;
 
     public void initUserMenu(UserModel user) {
-        String quit;
         do {
             quit = userView.userMenuInput(user);
             callChosenMethod(quit, user);
@@ -73,7 +73,9 @@ public class UserController {
     public void removeAccount(UserModel user) {
         Login login = new Login();
         userView.printRemoveAccountConditions();
+        System.out.print("Username: ");
         String username = login.usernameInput(scan.next());
+        System.out.print("Password: ");
         String password = login.passwordInput(scan.next());
         executeAccountDeletion(user, username, password);
     }
@@ -81,6 +83,7 @@ public class UserController {
     public void executeAccountDeletion(UserModel user, String username, String password) {
         if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
             AccountList.accountArrayList.remove(user);
+            quit = "0";
         } else {
             System.out.println("Username or password is incorrect");
         }

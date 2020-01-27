@@ -27,4 +27,9 @@ public class LoginTest {
     public void testPasswordInput() {
         Assert.assertEquals("Incorrect password returned", "password", login.usernameInput("password"));
     }
+
+    @Test
+    public void testLaunchMainMenu() {
+
+    }
 }

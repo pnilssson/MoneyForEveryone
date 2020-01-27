@@ -8,6 +8,7 @@ public class UserView {
 
     public String userMenuInput(UserModel user) {
         String choice;
+        System.out.println("Welcome " + user.getUsername() + "!");
         printUserMenu(user);
         choice = scan.next();
         while(!correctMenuChoice(choice)) {
@@ -52,7 +53,6 @@ public class UserView {
     }
 
     public void printUserMenu(UserModel user) {
-        System.out.println("Welcome " + user.getUsername() + "!");
         System.out.println("What would you like to do?");
         System.out.println("1) Check balance");
         System.out.println("2) Check current salary");
