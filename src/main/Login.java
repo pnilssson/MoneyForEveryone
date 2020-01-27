@@ -11,23 +11,19 @@ public class Login {
     Scanner scan = new Scanner(System.in);
 
     public void loginMenu() {
-        boolean loggedIn = false;
-        while (!loggedIn) {
-            System.out.println("");
+        System.out.println("");
 
-            System.out.print("Username: ");
-            String username = usernameInput(scan.next());
+        System.out.print("Username: ");
+        String username = usernameInput(scan.next());
 
-            System.out.print("Password: ");
-            String password = passwordInput(scan.next());
+        System.out.print("Password: ");
+        String password = passwordInput(scan.next());
 
-            Account acc = login(username, password);
-            if(acc != null) {
-                loggedIn = true;
-                launchMainMenu(acc);
-            } else {
-                System.out.println("Username or password is incorrect");
-            }
+        Account acc = login(username, password);
+        if(acc != null) {
+            launchMainMenu(acc);
+        } else {
+            System.out.println("Username or password is incorrect");
         }
     }
 
