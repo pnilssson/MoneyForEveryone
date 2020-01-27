@@ -43,6 +43,7 @@ public class RemoveAccount {
             if(executeAccountDeletion(acc, username, password)){
                 removedAccount = true;
                 acc.removeAccount(acc);
+                break;
             }
         }
 
@@ -51,11 +52,7 @@ public class RemoveAccount {
         } else {
             printIncorrectInput();
         }
-
-
     }
-
-
 
     public boolean executeAccountDeletion(Account acc, String username, String password) {
         /*
