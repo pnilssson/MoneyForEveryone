@@ -4,6 +4,7 @@ import main.GetInputs;
 import main.Login;
 import main.Role;
 import main.account.AccountList;
+import main.account.RemoveAccount;
 
 import java.util.Scanner;
 
@@ -71,21 +72,14 @@ public class UserController {
     }
 
     public void removeAccount(UserModel user) {
-        Login login = new Login();
+        RemoveAccount removeAccount = new RemoveAccount();
         userView.printRemoveAccountConditions();
         System.out.print("Username: ");
-        String username = login.usernameInput(scan.next());
+        String username = getInput.usernameInput(scan.next());
         System.out.print("Password: ");
-        String password = login.passwordInput(scan.next());
-        executeAccountDeletion(user, username, password);
-    }
-
-    public void executeAccountDeletion(UserModel user, String username, String password) {
-        if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-            AccountList.accountArrayList.remove(user);
+        String password = getInput.passwordInput(scan.next());
+        if(removeAccount.executeAccountDeletion(user, username, password)) {
             quit = "0";
-        } else {
-            System.out.println("Username or password is incorrect");
         }
     }
 }

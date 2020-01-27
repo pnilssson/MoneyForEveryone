@@ -1,5 +1,6 @@
 package test.unit_account;
 
+import main.GetInputs;
 import main.Login;
 import main.Role;
 import main.account.Account;
@@ -10,6 +11,7 @@ import org.junit.Test;
 
 public class LoginTest {
     Login login = new Login();
+    GetInputs getInput = new GetInputs();
     UserModel user = new UserModel(10, 0, Role.USER, "user1", "qwerty");
     Account account = user;
 
@@ -22,12 +24,12 @@ public class LoginTest {
 
     @Test
     public void testUsernameInput() {
-        Assert.assertEquals("Incorrect username returned", "user", login.usernameInput("user"));
+        Assert.assertEquals("Incorrect username returned", "user", getInput.usernameInput("user"));
     }
 
     @Test
     public void testPasswordInput() {
-        Assert.assertEquals("Incorrect password returned", "password", login.usernameInput("password"));
+        Assert.assertEquals("Incorrect password returned", "password", getInput.usernameInput("password"));
     }
 
     @Test

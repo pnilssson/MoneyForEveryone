@@ -13,13 +13,14 @@ public class Login {
     Scanner scan = new Scanner(System.in);
 
     public void loginMenu() {
+        GetInputs getInput = new GetInputs();
         System.out.println("");
 
         System.out.print("Username: ");
-        String username = usernameInput(scan.next());
+        String username = getInput.usernameInput(scan.next());
 
         System.out.print("Password: ");
-        String password = passwordInput(scan.next());
+        String password = getInput.passwordInput(scan.next());
 
         Account acc = login(username, password);
         if(acc != null) {
@@ -50,13 +51,5 @@ public class Login {
             AdminModel admin = (AdminModel) acc;
             // CALL ADMIN METHOD
         }
-    }
-
-    public String usernameInput(String username) {
-        return username.toLowerCase();
-    }
-
-    public String passwordInput(String password) {
-        return password;
     }
 }

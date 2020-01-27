@@ -44,4 +44,13 @@ public class GetInputs {
     public void incorrectInput() {
         System.out.println("Incorrect input");
     }
+
+
+    public String usernameInput(String username) {
+        return username.toLowerCase();
+    }
+
+    public String passwordInput(String password) {
+        return password;
+    }
 }
