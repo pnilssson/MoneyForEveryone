@@ -5,12 +5,12 @@ import main.account.Account;
 
 public class UserModel extends Account {
     private int requestedSalary;
-    private Enum<Role> requestedNewRole;
+    private Enum<Department> requestedNewDepartment;
 
     public UserModel(int salary, int balance, Enum<Role> role, Enum<Department> department, String username, String password) {
         super(salary, balance, role, department, username, password);
         this.requestedSalary = 0;
-        this.requestedNewRole = role;
+        this.requestedNewDepartment = department;
     }
 
     public int getRequestedSalary() {
@@ -21,11 +21,11 @@ public class UserModel extends Account {
         this.requestedSalary = requestedSalary;
     }
 
-    public Enum<Role> getRequestedNewRole() {
-        return requestedNewRole;
+    public Enum<Department> getRequestedNewDepartment() {
+        return requestedNewDepartment;
     }
 
-    public void setRequestedNewRole(Enum<Role> requestedNewRole) {
-        this.requestedNewRole = requestedNewRole;
+    public void setRequestedNewDepartment(Enum<Department> requestedNewDepartment) {
+        this.requestedNewDepartment = requestedNewDepartment;
     }
 }

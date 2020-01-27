@@ -1,6 +1,7 @@
 package main.user;
 
 import main.GetInputs;
+import main.enums.Department;
 import main.enums.Role;
 import main.account.RemoveAccount;
 
@@ -45,17 +46,17 @@ public class UserController {
     }
 
     public void requestNewRole(UserModel user) {
-        Enum<Role> newRole;
-        Enum<Role> currentRole = user.getRole();
+        Enum<Department> newDepartment;
+        Enum<Department> currentDepartment = user.getDepartment();
         userView.printNewRequestedRole();
-        newRole = getInput.getRoleFromInput(user);
-        if(currentRole != newRole) {
-            submitRoleChange(user, newRole);
+        newDepartment = getInput.getDepartmentFromInput(user);
+        if(currentDepartment != newDepartment) {
+            submitDepartmentChange(user, newDepartment);
         }
     }
 
-    public void submitRoleChange(UserModel user, Enum<Role> newRole) {
-        user.setRequestedNewRole(newRole);
+    public void submitDepartmentChange(UserModel user, Enum<Department> newDepartment) {
+        user.setRequestedNewDepartment(newDepartment);
     }
 
     public void requestNewSalary(UserModel user) {

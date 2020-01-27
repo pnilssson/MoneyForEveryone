@@ -1,5 +1,6 @@
 package main;
 
+import main.enums.Department;
 import main.enums.Role;
 import main.user.UserModel;
 
@@ -26,13 +27,10 @@ public class GetInputs {
         Enum<Role> roleToReturn;
         switch (chosenRole) {
             case 1:
-                roleToReturn = Role.DEVELOPER;
+                roleToReturn = Role.ADMIN;
                 break;
             case 2:
-                roleToReturn = Role.HR;
-                break;
-            case 3:
-                roleToReturn = Role.CEO;
+                roleToReturn = Role.USER;
                 break;
             default:
                 incorrectInput();
@@ -40,6 +38,31 @@ public class GetInputs {
                 break;
         }
         return roleToReturn;
+    }
+
+
+    public Enum<Department> getDepartmentFromInput(UserModel user){
+        int chosenRole = getIntFromInput();
+        Enum<Department> departmentToReturn;
+        switch (chosenRole) {
+            case 1:
+                departmentToReturn = Department.CEO;
+                break;
+            case 2:
+                departmentToReturn = Department.HR;
+                break;
+            case 3:
+                departmentToReturn = Department.DEVELOPER;
+                break;
+            case 4:
+                departmentToReturn = Department.SUPPORT;
+                break;
+            default:
+                incorrectInput();
+                departmentToReturn = user.getDepartment();
+                break;
+        }
+        return departmentToReturn;
     }
 
     public void incorrectInput() {
