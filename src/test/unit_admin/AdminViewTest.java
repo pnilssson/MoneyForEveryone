@@ -1,8 +1,8 @@
-package test.unit_user;
+package test.unit_admin;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class LoginUserTest {
+public class AdminViewTest {
 
 }

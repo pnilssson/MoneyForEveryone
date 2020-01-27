@@ -8,16 +8,16 @@ import java.util.Scanner;
 public class GetInputs {
     public int getIntFromInput() {
         boolean incorrectInput = true;
-        int newSalary = 0;
+        int numberToReturn = 0;
         do{
             try{
-                newSalary = new Scanner(System.in).nextInt();
+                numberToReturn = new Scanner(System.in).nextInt();
                 incorrectInput = false;
             } catch (InputMismatchException e) {
                 incorrectInput();
             }
         } while (incorrectInput);
-        return newSalary;
+        return numberToReturn;
     }
 
     public Enum<Role> getRoleFromInput(UserModel user){
