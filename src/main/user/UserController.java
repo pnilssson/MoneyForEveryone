@@ -11,11 +11,10 @@ public class UserController {
     private RemoveAccount removeAccount = new RemoveAccount();
 
     public void initUserMenu(UserModel user) {
-        String quit;
+        user.setLogin(true);
         do {
-            quit = userView.userMenuInput(user);
-            callChosenMethod(quit, user);
-        } while(!quit.equals("0"));
+            callChosenMethod(userView.userMenuInput(user), user);
+        } while (user.isLogin());
     }
 
     public void callChosenMethod(String menuChoice, UserModel user) {
@@ -30,41 +29,18 @@ public class UserController {
                 userView.printUserDepartment(user);
                 break;
             case "4":
-                requestNewDepartment(user);
+                user.requestNewDepartment(user);
                 break;
             case "5":
-                requestNewSalary(user);
+                user.requestNewSalary(user);
                 break;
             case "6":
                 removeAccount.removeMenu(user);
                 break;
+            case "0":
+                user.setLogin(false);
             default:
                 break;
         }
-    }
-
-    public void requestNewDepartment(UserModel user) {
-        Enum<Department> newDepartment;
-        Enum<Department> currentDepartment = user.getDepartment();
-        userView.printNewRequestedDepartment();
-        newDepartment = getInput.getDepartmentFromInput();
-        if(currentDepartment != newDepartment) {
-            submitDepartmentChange(user, newDepartment);
-        }
-    }
-
-    public void submitDepartmentChange(UserModel user, Enum<Department> newDepartment) {
-        user.setRequestedNewDepartment(newDepartment);
-    }
-
-    public void requestNewSalary(UserModel user) {
-        int newSalary = 0;
-        userView.printNewRequestedNewSalary();
-        newSalary = getInput.getIntFromInput();
-        submitSalaryChange(user, newSalary);
-    }
-
-    public void submitSalaryChange(UserModel user, int newSalary) {
-        user.setRequestedSalary(newSalary);
     }
 }

@@ -15,7 +15,7 @@ public class Login {
 
     public void loginMenu() {
         GetInputs getInput = new GetInputs();
-        System.out.println("");
+        System.out.println();
 
         System.out.print("Username: ");
         String username = getInput.usernameInput(scan.next());
@@ -50,7 +50,7 @@ public class Login {
         } else {
             AdminController adminController = new AdminController();
             AdminModel admin = (AdminModel) acc;
-            // CALL ADMIN METHOD
+            adminController.initAdminMenu(admin);
         }
     }
 }

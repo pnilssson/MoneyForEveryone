@@ -11,7 +11,7 @@ public class CreateAccount {
     private Scanner scan = new Scanner(System.in);
     private GetInputs getInput = new GetInputs();
 
-    public void createMenu(Account acc) {
+    public void createMenu() {
         Role role = null;
 
         System.out.println("Enter a username: ");
