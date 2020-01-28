@@ -11,11 +11,11 @@ public class UserController {
     private RemoveAccount removeAccount = new RemoveAccount();
 
     public void initUserMenu(UserModel user) {
-        String quit;
+        String menuChoice;
         do {
-            quit = userView.userMenuInput(user);
-            callChosenMethod(quit, user);
-        } while(!quit.equals("0"));
+            menuChoice = userView.userMenuInput(user);
+            callChosenMethod(menuChoice, user);
+        } while(!menuChoice.equals("0"));
     }
 
     public void callChosenMethod(String menuChoice, UserModel user) {

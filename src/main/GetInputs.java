@@ -8,17 +8,19 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GetInputs {
-    public int getIntFromInput() {
+
+     public int getIntFromInput() {
         boolean incorrectInput = true;
         int numberToReturn = 0;
-        do{
+
+        while(incorrectInput) {
             try{
                 numberToReturn = new Scanner(System.in).nextInt();
                 incorrectInput = false;
             } catch (InputMismatchException e) {
                 incorrectInput();
             }
-        } while (incorrectInput);
+        }
         return numberToReturn;
     }
 

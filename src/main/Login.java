@@ -50,7 +50,7 @@ public class Login {
         } else {
             AdminController adminController = new AdminController();
             AdminModel admin = (AdminModel) acc;
-            // CALL ADMIN METHOD
+            adminController.initAdminMenu(admin);
         }
     }
 }
