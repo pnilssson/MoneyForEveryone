@@ -13,7 +13,8 @@ public class MenuTest {
     }
 
     @Test
-    public void menuIncorrectInput() {
-        Assert.assertEquals("Menu incorrect input check", true, menu.menuChoice("k"));
+    public void testMenuChoice() {
+        Assert.assertTrue("Menu incorrect input check", menu.menuChoice("k"));
+        Assert.assertFalse("MenuChoice returning incorrect boolean", menu.menuChoice("0"));
     }
 }

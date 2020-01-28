@@ -6,13 +6,12 @@ import main.account.RemoveAccount;
 import java.util.Scanner;
 
 public class UserController {
-    private Scanner scan = new Scanner(System.in);
     private UserView userView = new UserView();
     private GetInputs getInput = new GetInputs();
     private RemoveAccount removeAccount = new RemoveAccount();
-    private String quit;
 
     public void initUserMenu(UserModel user) {
+        String quit;
         do {
             quit = userView.userMenuInput(user);
             callChosenMethod(quit, user);
@@ -68,19 +67,4 @@ public class UserController {
     public void submitSalaryChange(UserModel user, int newSalary) {
         user.setRequestedSalary(newSalary);
     }
-
-    /*
-    public void removeAccount(UserModel user) {
-        RemoveAccount removeAccount = new RemoveAccount();
-        userView.printUserRemoveAccountConditions();
-        System.out.print("Username: ");
-        String username = getInput.usernameInput(scan.next());
-        System.out.print("Password: ");
-        String password = getInput.passwordInput(scan.next());
-        if(removeAccount.executeAccountDeletion(user, username, password)) {
-            quit = "0";
-        }
-    }
-   */
-
 }

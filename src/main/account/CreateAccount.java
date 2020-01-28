@@ -8,13 +8,11 @@ import main.user.UserModel;
 import java.util.Scanner;
 
 public class CreateAccount {
-
     private Scanner scan = new Scanner(System.in);
     private GetInputs getInput = new GetInputs();
 
     public void createMenu(Account acc) {
         Role role = null;
-
 
         System.out.println("Enter a username: ");
         String username = getInput.usernameInput(scan.next());
@@ -34,7 +32,6 @@ public class CreateAccount {
         }
 
         createAccount(role, username, password);
-
     }
 
     public void createAccount(Enum<Role> role, String username, String password) {
@@ -52,9 +49,5 @@ public class CreateAccount {
     public void createUser(String username, String password) {
         UserModel user = new UserModel(username, password);
 
-    }
-
-    public void printIncorrectInput() {
-        System.out.println("Username or password is incorrect");
     }
 }
