@@ -11,41 +11,49 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class RemoveAccountTest {
-
-    CreateAccount createAccount = new CreateAccount();
     RemoveAccount removeAccount = new RemoveAccount();
+
+    UserModel user = new UserModel("user123", "test123");
+    AdminModel admin = new AdminModel("admin123", "test123");
 
     @Test
     public void testUserRemoveAccount() {
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 0);
-        createAccount.createAccount(Role.USER, "user123", "test123");
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 1);
-        UserModel user = (UserModel) AccountList.accountArrayList.get(AccountList.accountArrayList.size() -1);
-        removeAccount.removeAccount(user, "user123", "test123");
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 0);
+        AccountList.accountArrayList.add(user);
+
+        Assert.assertTrue("User not added to account list", AccountList.accountArrayList.contains(user));
+        removeAccount.removeAccount(user,"user123", "test123");
+        Assert.assertFalse("User not removed from account list", AccountList.accountArrayList.contains(user));
+
         AccountList.accountArrayList.clear();
     }
 
     @Test
     public void testAdminRemoveAccount() {
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 0);
-        createAccount.createAccount(Role.USER, "user123", "test123");
-        createAccount.createAccount(Role.ADMIN, "admin123", "test123");
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 2);
-        AdminModel admin =  (AdminModel) AccountList.accountArrayList.get(AccountList.accountArrayList.size() -1);
-        removeAccount.removeAccount(admin, "user123", "test123");
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 1);
+        AccountList.accountArrayList.add(user);
+        AccountList.accountArrayList.add(admin);
+
+        Assert.assertTrue("User not added to account list", AccountList.accountArrayList.contains(user));
+        Assert.assertTrue("Admin not added to account list", AccountList.accountArrayList.contains(admin));
+
+        removeAccount.removeAccount(admin,"user123", "test123");
+
+        Assert.assertFalse("User not removed from account list", AccountList.accountArrayList.contains(user));
+        Assert.assertTrue("Admin removed from account list", AccountList.accountArrayList.contains(admin));
+
         AccountList.accountArrayList.clear();
+
     }
 
     @Test
     public  void testAdminRemoveAccountSelf() {
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 0);
-        createAccount.createAccount(Role.ADMIN, "admin123", "test123");
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 1);
-        AdminModel admin =  (AdminModel) AccountList.accountArrayList.get(AccountList.accountArrayList.size() -1);
-        removeAccount.removeAccount(admin, "admin123", "test123");
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 1);
+        AccountList.accountArrayList.add(admin);
+
+        Assert.assertTrue("User not added to account list", AccountList.accountArrayList.contains(admin));
+
+        removeAccount.removeAccount(admin,"admin123", "test123");
+
+        Assert.assertTrue("Admin removed from account list", AccountList.accountArrayList.contains(admin));
+
         AccountList.accountArrayList.clear();
     }
 }

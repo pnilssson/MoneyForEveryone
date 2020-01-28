@@ -27,11 +27,4 @@ public class UserControllerTest {
         Assert.assertEquals("Requested salary not changed", 9999, user.getRequestedSalary());
     }
 
-    @Test
-    public void testRemoveAccount() {
-        AccountList.accountArrayList.add(user);
-        Assert.assertTrue("User not added to account list", AccountList.accountArrayList.contains(user));
-        removeAccount.executeAccountDeletion(user,"testuser", "testpassword");
-        Assert.assertFalse("User not removed from account list", AccountList.accountArrayList.contains(user));
-    }
 }
