@@ -11,11 +11,9 @@ public class UserController {
     private RemoveAccount removeAccount = new RemoveAccount();
 
     public void initUserMenu(UserModel user) {
-        String menuChoice;
         do {
-            menuChoice = userView.userMenuInput(user);
-            callChosenMethod(menuChoice, user);
-        } while(!menuChoice.equals("0"));
+            callChosenMethod(userView.userMenuInput(user), user);
+        } while(user.isLogin());
     }
 
     public void callChosenMethod(String menuChoice, UserModel user) {
@@ -37,6 +35,9 @@ public class UserController {
                 break;
             case "6":
                 removeAccount.removeMenu(user);
+                break;
+            case "0":
+                user.setLogin(false);
                 break;
             default:
                 break;
