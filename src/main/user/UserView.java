@@ -36,6 +36,24 @@ public class UserView {
         System.out.println("Your current role is: " + user.getRole());
     }
 
+/*
+    public void printUserRemoveAccountConditions() {
+        System.out.println("Please confirm deletion of account by entering username and password");
+    }
+*/
+
+    public void printNewRequestedDepartment() {
+        System.out.println("What role would you like to request?");
+        System.out.println("1) Developer");
+        System.out.println("2) HR");
+        System.out.println("3) Support");
+        System.out.println("4) CEO");
+    }
+
+    public void printNewRequestedNewSalary() {
+        System.out.println("Enter the amount of salary you want to request: ");
+    }
+
     public void printUserMenu() {
         System.out.println("What would you like to do?");
         System.out.println("1) Check balance");

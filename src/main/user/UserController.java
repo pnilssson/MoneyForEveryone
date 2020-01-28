@@ -7,13 +7,15 @@ import java.util.Scanner;
 
 public class UserController {
     private UserView userView = new UserView();
+    private GetInputs getInput = new GetInputs();
     private RemoveAccount removeAccount = new RemoveAccount();
 
     public void initUserMenu(UserModel user) {
-        user.setLogin(true);
+        String menuChoice;
         do {
-            callChosenMethod(userView.userMenuInput(user), user);
-        } while (user.isLogin());
+            menuChoice = userView.userMenuInput(user);
+            callChosenMethod(menuChoice, user);
+        } while(!menuChoice.equals("0"));
     }
 
     public void callChosenMethod(String menuChoice, UserModel user) {
@@ -28,18 +30,41 @@ public class UserController {
                 userView.printUserDepartment(user);
                 break;
             case "4":
-                user.requestNewDepartment(user);
+                requestNewDepartment(user);
                 break;
             case "5":
-                user.requestNewSalary(user);
+                requestNewSalary(user);
                 break;
             case "6":
                 removeAccount.removeMenu(user);
                 break;
-            case "0":
-                user.setLogin(false);
             default:
                 break;
         }
+    }
+
+    public void requestNewDepartment(UserModel user) {
+        Enum<Department> newDepartment;
+        Enum<Department> currentDepartment = user.getDepartment();
+        userView.printNewRequestedDepartment();
+        newDepartment = getInput.getDepartmentFromInput();
+        if(currentDepartment != newDepartment) {
+            submitDepartmentChange(user, newDepartment);
+        }
+    }
+
+    public void submitDepartmentChange(UserModel user, Enum<Department> newDepartment) {
+        user.setRequestedNewDepartment(newDepartment);
+    }
+
+    public void requestNewSalary(UserModel user) {
+        int newSalary = 0;
+        userView.printNewRequestedNewSalary();
+        newSalary = getInput.getIntFromInput();
+        submitSalaryChange(user, newSalary);
+    }
+
+    public void submitSalaryChange(UserModel user, int newSalary) {
+        user.setRequestedSalary(newSalary);
     }
 }

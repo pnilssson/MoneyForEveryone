@@ -3,21 +3,22 @@ package main.admin;
 import main.GetInputs;
 import main.account.Account;
 import main.account.AccountList;
-import main.account.CreateAccount;
 import main.enums.Department;
 import main.account.RemoveAccount;
 import java.util.Scanner;
 
 public class AdminController {
+    private Scanner scan = new Scanner(System.in);
     private AdminView adminView = new AdminView();
+    private GetInputs getInput = new GetInputs();
     private RemoveAccount removeAccount = new RemoveAccount();
-    private CreateAccount createAccount = new CreateAccount();
+    private String quit;
 
     public void initAdminMenu(AdminModel admin) {
-        admin.setLogin(true);
         do {
-            callChosenMethod(adminView.adminMenuInput(admin), admin);
-        } while(admin.isLogin());
+            quit = adminView.adminMenuInput(admin);
+            callChosenMethod(quit, admin);
+        } while(!quit.equals("0"));
     }
 
     public void callChosenMethod(String menuChoice, AdminModel admin) {
@@ -32,28 +33,20 @@ public class AdminController {
                 adminView.printAdminDepartment(admin);
                 break;
             case "4":
-                admin.requestNewDepartment(admin);
-                break;
-            case "5":
-                admin.requestNewSalary(admin);
-                break;
-            case "6":
                 adminView.displayUserDetails();
                 break;
-            case "7":
-                checkRequestedChanges();
+            case "5":
+                //checkRequestedChanges();
                 break;
-            case "8":
+            case "6":
                 advanceCalendarAndPayout();
                 break;
-            case "9":
-                createAccount.createMenu();
+            case "7":
+                //createAccount();
                 break;
-            case "10":
+            case "8":
                 removeAccount.removeMenu(admin);
                 break;
-            case "0":
-                admin.setLogin(false);
             default:
                 break;
         }
@@ -63,9 +56,5 @@ public class AdminController {
         for (Account acc : AccountList.accountArrayList) {
             acc.setBalance(acc.getBalance() + acc.getSalary());
         }
-    }
-
-    public void checkRequestedChanges() {
-
     }
 }

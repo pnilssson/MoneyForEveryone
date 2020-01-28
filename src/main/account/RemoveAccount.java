@@ -34,7 +34,8 @@ public class RemoveAccount {
         if(executeAccountDeletion(user, username, password)){
             user.removeAccount(user);
             printRemovedAccount(username);
-            user.setLogin(false);
+            // Menu menu = new Menu();
+            // menu.startMenu();
         } else {
             printIncorrectInput();
         }

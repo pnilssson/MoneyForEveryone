@@ -1,11 +1,8 @@
 package main.account;
 
-import main.GetInputs;
 import main.enums.*;
 
 public abstract class Account {
-    GetInputs getInput = new GetInputs();
-    AccountView accView = new AccountView();
     private int accountId;
     private static int idCounter = -1;
     private int salary;
@@ -15,8 +12,6 @@ public abstract class Account {
     private boolean login;
     private String username;
     private String password;
-    private int requestedSalary;
-    private Enum<Department> requestedNewDepartment;
 
     public Account(int salary, int balance, Enum<Role> role, Enum<Department> department, String username, String password) {
         this.accountId = idCounter++;
@@ -27,8 +22,6 @@ public abstract class Account {
         this.login = false;
         this.username = username;
         this.password = password;
-        this.requestedSalary = salary;
-        this.requestedNewDepartment = department;
     }
 
     public int getAccountId() {
@@ -95,49 +88,7 @@ public abstract class Account {
         this.password = password;
     }
 
-    public int getRequestedSalary() {
-        return requestedSalary;
-    }
-
-    public void setRequestedSalary(int requestedSalary) {
-        this.requestedSalary = requestedSalary;
-    }
-
-    public Enum<Department> getRequestedNewDepartment() {
-        return requestedNewDepartment;
-    }
-
-    public void setRequestedNewDepartment(Enum<Department> requestedNewDepartment) {
-        this.requestedNewDepartment = requestedNewDepartment;
-    }
-
     public void removeAccount(Account acc) {
         AccountList.accountArrayList.remove(acc);
     }
-
-    public void requestNewDepartment(Account acc) {
-        Enum<Department> newDepartment;
-        Enum<Department> currentDepartment = acc.getDepartment();
-        accView.printNewRequestedDepartment();
-        newDepartment = getInput.getDepartmentFromInput();
-        if(currentDepartment != newDepartment) {
-            submitDepartmentChange(acc, newDepartment);
-        }
-    }
-
-    public void submitDepartmentChange(Account acc, Enum<Department> newDepartment) {
-        acc.setRequestedNewDepartment(newDepartment);
-    }
-
-    public void requestNewSalary(Account acc) {
-        int newSalary = 0;
-        accView.printNewRequestedNewSalary();
-        newSalary = getInput.getIntFromInput();
-        submitSalaryChange(acc, newSalary);
-    }
-
-    public void submitSalaryChange(Account acc, int newSalary) {
-        acc.setRequestedSalary(newSalary);
-    }
 }
-
