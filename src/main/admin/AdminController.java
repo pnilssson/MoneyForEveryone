@@ -3,8 +3,11 @@ package main.admin;
 import main.GetInputs;
 import main.account.Account;
 import main.account.AccountList;
+import main.calendar.Calendar;
 import main.enums.Department;
 import main.account.RemoveAccount;
+
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class AdminController {
@@ -12,13 +15,15 @@ public class AdminController {
     private AdminView adminView = new AdminView();
     private GetInputs getInput = new GetInputs();
     private RemoveAccount removeAccount = new RemoveAccount();
-    private String quit;
+
+    Calendar cal = new Calendar();
 
     public void initAdminMenu(AdminModel admin) {
+        String menuInput;
         do {
-            quit = adminView.adminMenuInput(admin);
-            callChosenMethod(quit, admin);
-        } while(!quit.equals("0"));
+            menuInput = adminView.adminMenuInput(admin);
+            callChosenMethod(menuInput, admin);
+        } while(!menuInput.equals("0"));
     }
 
     public void callChosenMethod(String menuChoice, AdminModel admin) {
@@ -53,6 +58,7 @@ public class AdminController {
     }
 
     public void advanceCalendarAndPayout() {
+        cal.getCal().add(GregorianCalendar.MONTH, 1);
         for (Account acc : AccountList.accountArrayList) {
             acc.setBalance(acc.getBalance() + acc.getSalary());
         }

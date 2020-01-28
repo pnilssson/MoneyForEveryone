@@ -15,7 +15,7 @@ public class Login {
 
     public void loginMenu() {
         GetInputs getInput = new GetInputs();
-        System.out.println("");
+        System.out.println();
 
         System.out.print("Username: ");
         String username = getInput.usernameInput(scan.next());
@@ -43,6 +43,7 @@ public class Login {
     }
 
     public void launchMainMenu(Account acc) {
+        System.out.println("Welcome " + acc.getUsername() + "!");
         if(acc.getRole() == Role.USER) {
             UserController userController = new UserController();
             UserModel user = (UserModel) acc;

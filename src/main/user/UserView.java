@@ -1,5 +1,7 @@
 package main.user;
 
+import main.calendar.Calendar;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -8,7 +10,7 @@ public class UserView {
 
     public String userMenuInput(UserModel user) {
         String choice;
-        System.out.println("Welcome " + user.getUsername() + "!");
+        // System.out.println("Welcome " + user.getUsername() + "!");
         printUserMenu();
         choice = scan.next();
         while(!correctUserMenuChoice(choice)) {
@@ -55,6 +57,7 @@ public class UserView {
     }
 
     public void printUserMenu() {
+        System.out.println(Calendar.cal.getTime());
         System.out.println("What would you like to do?");
         System.out.println("1) Check balance");
         System.out.println("2) Check current salary");

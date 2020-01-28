@@ -2,6 +2,7 @@ package main.admin;
 
 import main.account.Account;
 import main.account.AccountList;
+import main.calendar.Calendar;
 import main.user.UserModel;
 
 import java.util.Arrays;
@@ -12,7 +13,7 @@ public class AdminView {
 
     public String adminMenuInput(AdminModel admin) {
         String choice;
-        System.out.println("Welcome " + admin.getUsername() + "!");
+        // System.out.println("Welcome " + admin.getUsername() + "!");
         printUserMenu();
         choice = scan.next();
         while(!correctAdminMenuChoice(choice)) {
@@ -47,6 +48,7 @@ public class AdminView {
 */
 
     public void printUserMenu() {
+        System.out.println(Calendar.cal.getTime());
         System.out.println("What would you like to do?");
         System.out.println("1) Check balance");
         System.out.println("2) Check current salary");
