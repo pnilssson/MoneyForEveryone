@@ -6,6 +6,7 @@ import main.account.AccountList;
 import main.calendar.Calendar;
 import main.enums.Department;
 import main.account.RemoveAccount;
+import main.user.UserModel;
 
 import java.util.GregorianCalendar;
 import java.util.Scanner;
