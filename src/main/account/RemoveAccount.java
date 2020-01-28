@@ -1,11 +1,11 @@
 package main.account;
 
 import main.GetInputs;
+import main.Menu;
 import main.enums.Role;
 import java.util.Scanner;
 
 public class RemoveAccount {
-
     private GetInputs getInput = new GetInputs();
     private Scanner scan = new Scanner(System.in);
 
@@ -31,6 +31,8 @@ public class RemoveAccount {
         if(executeAccountDeletion(acc, username, password)){
             acc.removeAccount(acc);
             printRemovedAccount(username);
+            Menu menu = new Menu();
+            menu.startMenu();
         } else {
             printIncorrectInput();
         }
@@ -55,14 +57,6 @@ public class RemoveAccount {
     }
 
     public boolean executeAccountDeletion(Account acc, String username, String password) {
-        /*
-        if (username.equals(acc.getUsername()) && password.equals(acc.getPassword())) {
-            return true;
-        } else {
-            return false;
-        }
-        */
-
         return username.equals(acc.getUsername()) && password.equals(acc.getPassword());
     }
 
