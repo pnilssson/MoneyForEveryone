@@ -20,7 +20,7 @@ public class Menu {
                 login.loginMenu();
                 return true;
             case "0":
-                return false;
+                System.exit(0);
             default:
                 System.out.println("Incorrect input");
                 return true;
