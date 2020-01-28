@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class UserController {
     private UserView userView = new UserView();
-    private GetInputs getInput = new GetInputs();
     private RemoveAccount removeAccount = new RemoveAccount();
 
     public void initUserMenu(UserModel user) {

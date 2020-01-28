@@ -2,7 +2,10 @@ package main.account;
 
 import main.GetInputs;
 import main.Menu;
+import main.admin.AdminModel;
 import main.enums.Role;
+import main.user.UserModel;
+
 import java.util.Scanner;
 
 public class RemoveAccount {
@@ -21,35 +24,42 @@ public class RemoveAccount {
 
     public void checkRoleBeforeRemoveAccount(Account acc, String username, String password) {
         if (acc.getRole().equals(Role.USER)) {
-            removeAccount(acc, username, password);
+            removeAccount((UserModel) acc, username, password);
         } else {
-            removeAccount(username, password);
+            removeAccount((AdminModel) acc, username, password);
         }
     }
 
-    public void removeAccount(Account acc, String username, String password) {
-        if(executeAccountDeletion(acc, username, password)){
-            acc.removeAccount(acc);
+    public void removeAccount(UserModel user, String username, String password) {
+        if(executeAccountDeletion(user, username, password)){
+            user.removeAccount(user);
             printRemovedAccount(username);
-            acc.setLogin(false);
+            user.setLogin(false);
         } else {
             printIncorrectInput();
         }
     }
 
-    public void removeAccount(String username, String password) {
+    public void removeAccount(AdminModel admin, String username, String password) {
         boolean removedAccount = false;
+        boolean sameAccount = false;
 
         for(Account acc : AccountList.accountArrayList) {
-            if(executeAccountDeletion(acc, username, password)){
-                removedAccount = true;
-                acc.removeAccount(acc);
-                break;
+            if(admin != acc) {
+                if (executeAccountDeletion(acc, username, password)) {
+                    removedAccount = true;
+                    acc.removeAccount(acc);
+                    break;
+                }
+            } else {
+                sameAccount = true;
             }
         }
 
         if (removedAccount) {
             printRemovedAccount(username);
+        } else if(sameAccount) {
+           printIncorrectAccount();
         } else {
             printIncorrectInput();
         }
@@ -65,6 +75,10 @@ public class RemoveAccount {
 
     public void printIncorrectInput() {
         System.out.println("Username or password is incorrect");
+    }
+
+    public void printIncorrectAccount() {
+        System.out.println("Admin cannot remove their own account");
     }
 
     public void printRemovedAccount(String username) {
