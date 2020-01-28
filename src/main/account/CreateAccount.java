@@ -16,11 +16,11 @@ public class CreateAccount {
 
         System.out.println("Enter a username: ");
         String username = getInput.usernameInput(scan.next());
-        // newUsername();
+        //TODO newUsername();
 
         System.out.println("Enter a password: ");
         String password = getInput.passwordInput(scan.next());
-        // newPassword();
+        //TODO newPassword();
 
         while(role == null) {
             System.out.println("Choose a role for the new account: ");
