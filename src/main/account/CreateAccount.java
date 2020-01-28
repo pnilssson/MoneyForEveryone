@@ -36,18 +36,17 @@ public class CreateAccount {
 
     public void createAccount(Enum<Role> role, String username, String password) {
         if(role.equals(Role.USER)) {
-            createUser(username, password);
+            AccountList.accountArrayList.add(createUser(username, password));
         } else {
-            createAdmin(username, password);
+            AccountList.accountArrayList.add(createAdmin(username, password));
         }
     }
 
-    public void createAdmin(String username, String password) {
-        AdminModel admin = new AdminModel(username, password);
+    public AdminModel createAdmin(String username, String password) {
+        return new AdminModel(username, password);
     }
 
-    public void createUser(String username, String password) {
-        UserModel user = new UserModel(username, password);
-
+    public UserModel createUser(String username, String password) {
+        return new UserModel(username, password);
     }
 }
