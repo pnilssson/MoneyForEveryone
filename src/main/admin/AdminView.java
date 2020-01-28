@@ -3,6 +3,7 @@ package main.admin;
 import main.account.Account;
 import main.account.AccountList;
 import main.calendar.Calendar;
+import main.enums.Role;
 import main.user.UserModel;
 
 import java.util.Arrays;
@@ -70,6 +71,21 @@ public class AdminView {
             System.out.println("Role: " + acc.getRole());
             System.out.println("Department: " + acc.getDepartment());
             System.out.println("");
+        }
+    }
+
+    private void displayRequests() {
+        for(Account acc: AccountList.accountArrayList) {
+            UserModel user;
+            if(acc.getRole() == Role.USER) {
+                user = (UserModel) acc;
+                if(acc.getDepartment() != user.getRequestedNewDepartment()) {
+                    System.out.println(user.getUsername() + "has requested " + user.getRequestedNewDepartment() + " as new department.");
+                }
+                if(user.getSalary() != user.getRequestedSalary()) {
+                    System.out.println(user.getUsername() + "has requested " + user.getRequestedSalary() + " as new salary, current salary: " + user.getSalary());
+                }
+            }
         }
     }
 }

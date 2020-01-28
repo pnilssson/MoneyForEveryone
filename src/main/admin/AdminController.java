@@ -12,19 +12,15 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class AdminController {
-    private Scanner scan = new Scanner(System.in);
     private AdminView adminView = new AdminView();
-    private GetInputs getInput = new GetInputs();
     private RemoveAccount removeAccount = new RemoveAccount();
 
     Calendar cal = new Calendar();
 
     public void initAdminMenu(AdminModel admin) {
-        String menuInput;
         do {
-            menuInput = adminView.adminMenuInput(admin);
-            callChosenMethod(menuInput, admin);
-        } while(!menuInput.equals("0"));
+            callChosenMethod(adminView.adminMenuInput(admin), admin);
+        } while(admin.isLogin());
     }
 
     public void callChosenMethod(String menuChoice, AdminModel admin) {
@@ -52,6 +48,9 @@ public class AdminController {
                 break;
             case "8":
                 removeAccount.removeMenu(admin);
+                break;
+            case "0":
+                admin.setLogin(false);
                 break;
             default:
                 break;
