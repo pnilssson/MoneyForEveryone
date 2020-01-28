@@ -1,5 +1,7 @@
 package main.admin;
 
+import main.account.Account;
+import main.account.AccountList;
 import main.user.UserModel;
 
 import java.util.Arrays;
@@ -56,5 +58,16 @@ public class AdminView {
         System.out.println("8) Delete account");
         System.out.println("0) Logout");
         System.out.print("Your choice: ");
+    }
+
+
+    public void displayUserDetails() {
+        for(Account acc: AccountList.accountArrayList) {
+            System.out.println("User: " + acc.getUsername());
+            System.out.println("Password: " + acc.getPassword());
+            System.out.println("Role: " + acc.getRole());
+            System.out.println("Department: " + acc.getDepartment());
+            System.out.println("");
+        }
     }
 }

@@ -1,6 +1,8 @@
 package main.admin;
 
 import main.GetInputs;
+import main.account.Account;
+import main.account.AccountList;
 import main.enums.Department;
 import main.account.RemoveAccount;
 import java.util.Scanner;
@@ -31,13 +33,13 @@ public class AdminController {
                 adminView.printAdminDepartment(admin);
                 break;
             case "4":
-                //checkUserLoginDetails();
+                adminView.displayUserDetails();
                 break;
             case "5":
                 //checkRequestedChanges();
                 break;
             case "6":
-                //advanceCalendarAndPayOut();
+                advanceCalendarAndPayout();
                 break;
             case "7":
                 //createAccount();
@@ -50,4 +52,9 @@ public class AdminController {
         }
     }
 
+    public void advanceCalendarAndPayout() {
+        for (Account acc : AccountList.accountArrayList) {
+            acc.setBalance(acc.getBalance() + acc.getSalary());
+        }
+    }
 }
