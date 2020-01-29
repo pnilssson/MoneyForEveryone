@@ -74,16 +74,16 @@ public class AdminView {
         }
     }
 
-    private void displayRequests() {
+    public void displayRequests() {
         for(Account acc: AccountList.accountArrayList) {
             UserModel user;
             if(acc.getRole() == Role.USER) {
                 user = (UserModel) acc;
-                if(acc.getDepartment() != user.getRequestedNewDepartment()) {
-                    System.out.println(user.getUsername() + "has requested " + user.getRequestedNewDepartment() + " as new department.");
+                if(user.getDepartment() != user.getRequestedNewDepartment()) {
+                    System.out.println(user.getUsername() + " has requested " + user.getRequestedNewDepartment() + " as new department.");
                 }
                 if(user.getSalary() != user.getRequestedSalary()) {
-                    System.out.println(user.getUsername() + "has requested " + user.getRequestedSalary() + " as new salary, current salary: " + user.getSalary());
+                    System.out.println(user.getUsername() + " has requested " + user.getRequestedSalary() + " as new salary, current salary: " + user.getSalary());
                 }
             }
         }

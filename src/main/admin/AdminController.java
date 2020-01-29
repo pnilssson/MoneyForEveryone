@@ -18,6 +18,7 @@ public class AdminController {
     Calendar cal = new Calendar();
 
     public void initAdminMenu(AdminModel admin) {
+        admin.setLogin(true);
         do {
             callChosenMethod(adminView.adminMenuInput(admin), admin);
         } while(admin.isLogin());
@@ -38,7 +39,7 @@ public class AdminController {
                 adminView.displayUserDetails();
                 break;
             case "5":
-                //checkRequestedChanges();
+                adminView.displayRequests();
                 break;
             case "6":
                 advanceCalendarAndPayout();

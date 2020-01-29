@@ -18,4 +18,9 @@ public class AdminControllerTest {
         adminController.advanceCalendarAndPayout();
         Assert.assertEquals("Incorrect salary added to balance", 10, user.getBalance());
     }
+
+    @Test
+    public void testRequestedChanges() {
+
+    }
 }

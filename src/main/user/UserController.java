@@ -11,6 +11,7 @@ public class UserController {
     private RemoveAccount removeAccount = new RemoveAccount();
 
     public void initUserMenu(UserModel user) {
+        user.setLogin(true);
         do {
             callChosenMethod(userView.userMenuInput(user), user);
         } while(user.isLogin());
