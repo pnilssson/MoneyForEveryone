@@ -9,20 +9,20 @@ import java.util.InputMismatchException;
 
 public class GetInputs {
 
-     public int getIntFromInput() {
-        boolean incorrectInput = true;
-        int numberToReturn = 0;
+     public String getIntFromInput(String input) {
+         int convertInputToInt = 0;
+         try{
+             convertInputToInt = Integer.parseInt(input);
+             input = String.valueOf(convertInputToInt);
+         } catch (InputMismatchException | NumberFormatException | NullPointerException e) {
+            input = null;
+         }
 
-        while(incorrectInput) {
-            try{
-                // numberToReturn = new Scanner(System.in).nextInt();
-                numberToReturn = ScannerClass.scan.nextInt();
-                incorrectInput = false;
-            } catch (InputMismatchException e) {
-                incorrectInput();
-            }
-        }
-        return numberToReturn;
+         return input;
+    }
+
+    public int convertStringToInt(String string) {
+         return Integer.parseInt(string);
     }
 
     public Enum<Role> getRoleFromInput(String input){
@@ -36,7 +36,7 @@ public class GetInputs {
                 roleToReturn = Role.USER;
                 break;
             default:
-                // incorrectInput();
+                incorrectInput();
                 roleToReturn = null;
                 break;
         }
@@ -61,7 +61,7 @@ public class GetInputs {
                 departmentToReturn = Department.SUPPORT;
                 break;
             default:
-                // incorrectInput();
+                incorrectInput();
                 departmentToReturn = null;
                 break;
         }

@@ -60,10 +60,15 @@ public class UserController {
     }
 
     public void requestNewSalary(UserModel user) {
-        int newSalary = 0;
+        int newIntSalary = 0;
         userView.printNewRequestedNewSalary();
-        newSalary = getInput.getIntFromInput();
-        submitSalaryChange(user, newSalary);
+        String newSalary = getInput.getIntFromInput(ScannerClass.scan.next());
+        if(newSalary != null) {
+            newIntSalary = getInput.convertStringToInt(newSalary);
+            submitSalaryChange(user, newIntSalary);
+        } else {
+            getInput.incorrectInput();
+        }
     }
 
     public void submitSalaryChange(UserModel user, int newSalary) {

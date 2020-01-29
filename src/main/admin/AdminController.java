@@ -8,6 +8,8 @@ import main.calendar.Calendar;
 import main.account.RemoveAccount;
 import main.enums.Role;
 import main.user.UserModel;
+import main.utils.ScannerClass;
+
 import java.util.GregorianCalendar;
 
 public class AdminController {
@@ -68,7 +70,12 @@ public class AdminController {
     public void manageRequests() {
         boolean anyRequests = displayAllRequests();
         if (anyRequests) {
-            displaySpecificRequests(getInput.getIntFromInput());
+            String input = getInput.getIntFromInput(ScannerClass.scan.next());
+            if(input != null) {
+                displaySpecificRequests(getInput.convertStringToInt(input));
+            } else {
+                getInput.incorrectInput();
+            }
         } else {
             adminView.printNoRequests();
         }
@@ -115,11 +122,16 @@ public class AdminController {
 
     public void acceptOrDeclineSalaryRequest(UserModel user) {
         adminView.displayNewSalary(user);
-        int adminInput = getInput.getIntFromInput();
-        if (adminInput == 1) {
-            acceptSalaryChange(user);
-        } else if (adminInput == 2) {
-            declineSalaryChange(user);
+        String adminInput = getInput.getIntFromInput(ScannerClass.scan.next());
+        if(adminInput != null) {
+            int adminIntInput = getInput.convertStringToInt(adminInput);
+            if (adminIntInput == 1) {
+                acceptSalaryChange(user);
+            } else if (adminIntInput == 2) {
+                declineSalaryChange(user);
+            } else {
+                getInput.incorrectInput();
+            }
         } else {
             getInput.incorrectInput();
         }
@@ -135,11 +147,17 @@ public class AdminController {
 
     public void acceptOrDeclineDepartmentRequest(UserModel user) {
         adminView.displayNewDepartment(user);
-        int adminInput = getInput.getIntFromInput();
-        if(adminInput == 1) {
-            acceptDepartmentChange(user);
-        } else if (adminInput == 2){
-            declineDepartmentChange(user);
+        //int adminInput = getInput.getIntFromInput(ScannerClass.scan.next());
+        String adminInput = getInput.getIntFromInput(ScannerClass.scan.next());
+        if(adminInput != null) {
+            int adminIntInput = getInput.convertStringToInt(adminInput);
+            if (adminIntInput == 1) {
+                acceptDepartmentChange(user);
+            } else if (adminIntInput == 2) {
+                declineDepartmentChange(user);
+            } else {
+                getInput.incorrectInput();
+            }
         } else {
             getInput.incorrectInput();
         }
