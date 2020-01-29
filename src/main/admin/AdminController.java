@@ -71,8 +71,10 @@ public class AdminController {
 
     public void manageRequests() {
         boolean anyRequests = displayAllRequests();
-        if(anyRequests) {
+        if (anyRequests) {
             displaySpecificRequests(getInput.getIntFromInput());
+        } else {
+            adminView.printNoRequests();
         }
     }
 
@@ -89,7 +91,7 @@ public class AdminController {
             }
         }
         if(anyRequests) {
-            System.out.print("Chose user ID to manage: ");
+            adminView.printIdToManage();
             return true;
         }
         return false;
@@ -111,7 +113,7 @@ public class AdminController {
             }
         }
         if(!userFound) {
-            System.out.println("No user with this Id.");
+            adminView.printNoUserWithId();
         }
     }
 
@@ -123,7 +125,7 @@ public class AdminController {
         } else if (adminInput == 2) {
             declineSalaryChange(user);
         } else {
-            System.out.println("Incorrect input.");
+            getInput.incorrectInput();
         }
     }
 
@@ -143,7 +145,7 @@ public class AdminController {
         } else if (adminInput == 2){
             declineDepartmentChange(user);
         } else {
-            System.out.println("Incorrect input.");
+            getInput.incorrectInput();
         }
     }
 
