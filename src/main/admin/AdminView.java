@@ -5,21 +5,21 @@ import main.account.AccountList;
 import main.calendar.Calendar;
 import main.enums.Role;
 import main.user.UserModel;
+import main.utils.ScannerClass;
 
 import javax.jws.soap.SOAPBinding;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class AdminView {
-    Scanner scan = new Scanner(System.in);
 
     public String adminMenuInput(AdminModel admin) {
         String choice;
         printUserMenu();
-        choice = scan.next();
+        choice = ScannerClass.scan.next();
         while(!correctAdminMenuChoice(choice)) {
             System.out.println("Incorrect input");
-            choice = scan.next();
+            choice = ScannerClass.scan.next();
         }
         return choice;
     }

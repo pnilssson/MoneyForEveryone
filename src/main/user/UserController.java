@@ -3,7 +3,7 @@ package main.user;
 import main.GetInputs;
 import main.enums.Department;
 import main.account.RemoveAccount;
-import java.util.Scanner;
+import main.utils.ScannerClass;
 
 public class UserController {
     private UserView userView = new UserView();
@@ -49,7 +49,7 @@ public class UserController {
         Enum<Department> newDepartment;
         Enum<Department> currentDepartment = user.getDepartment();
         userView.printNewRequestedDepartment();
-        newDepartment = getInput.getDepartmentFromInput();
+        newDepartment = getInput.getDepartmentFromInput(ScannerClass.scan.next());
         if(currentDepartment != newDepartment) {
             submitDepartmentChange(user, newDepartment);
         }

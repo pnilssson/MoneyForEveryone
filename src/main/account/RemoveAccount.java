@@ -5,19 +5,18 @@ import main.Menu;
 import main.admin.AdminModel;
 import main.enums.Role;
 import main.user.UserModel;
+import main.utils.ScannerClass;
 
-import java.util.Scanner;
 
 public class RemoveAccount {
     private GetInputs getInput = new GetInputs();
-    private Scanner scan = new Scanner(System.in);
 
     public void removeMenu(Account acc) {
         printRemoveAccountConditions();
         System.out.print("Username: ");
-        String username = getInput.usernameInput(scan.next());
+        String username = getInput.usernameInput(ScannerClass.scan.next());
         System.out.print("Password: ");
-        String password = getInput.passwordInput(scan.next());
+        String password = getInput.passwordInput(ScannerClass.scan.next());
 
         checkRoleBeforeRemoveAccount(acc, username, password);
     }

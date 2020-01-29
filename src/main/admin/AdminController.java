@@ -5,14 +5,10 @@ import main.account.Account;
 import main.account.AccountList;
 import main.account.CreateAccount;
 import main.calendar.Calendar;
-import main.enums.Department;
 import main.account.RemoveAccount;
 import main.enums.Role;
 import main.user.UserModel;
-
-import javax.jws.soap.SOAPBinding;
 import java.util.GregorianCalendar;
-import java.util.Scanner;
 
 public class AdminController {
     private AdminView adminView = new AdminView();
@@ -49,7 +45,7 @@ public class AdminController {
                 advanceCalendarAndPayout();
                 break;
             case "7":
-                createAccount.createMenu(admin);
+                createAccount.createMenu();
                 break;
             case "8":
                 removeAccount.removeMenu(admin);

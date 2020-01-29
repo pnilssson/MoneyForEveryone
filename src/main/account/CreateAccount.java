@@ -11,7 +11,7 @@ public class CreateAccount {
     private Scanner scan = new Scanner(System.in);
     private GetInputs getInput = new GetInputs();
 
-    public void createMenu(Account acc) {
+    public void createMenu() {
 
         System.out.println("Username and Password must contain at least 1 letter and 1 number: ");
         /*
@@ -23,9 +23,11 @@ public class CreateAccount {
     }
 
     public void createAccount(Enum<Role> role, String username, String password) {
-        if(username.length() > 0 && password.length() > 0) {
-            if(checkIfUsernameIsAvailable(username)) {
-                if(role.equals(Role.USER)) {
+        if(username.equals("") || password.equals("")) {
+            getInput.incorrectInput();
+        } else {
+            if (checkIfUsernameIsAvailable(username)) {
+                if (role.equals(Role.USER)) {
                     AccountList.accountArrayList.add(createUser(username, password));
                 } else {
                     AccountList.accountArrayList.add(createAdmin(username, password));
@@ -33,16 +35,14 @@ public class CreateAccount {
             } else {
                 printUsernameTaken();
             }
-        } else {
-            getInput.incorrectInput();
         }
     }
 
-    public AdminModel createAdmin(String username, String password) {
+    private AdminModel createAdmin(String username, String password) {
         return new AdminModel(username, password);
     }
 
-    public UserModel createUser(String username, String password) {
+    private UserModel createUser(String username, String password) {
         return new UserModel(username, password);
     }
 
@@ -52,20 +52,16 @@ public class CreateAccount {
         System.out.println("2) User");
         System.out.print("Your choice: ");
 
-        return (Role) getInput.getRoleFromInput();
+        return (Role) getInput.getRoleFromInput(scan.next());
     }
 
     public String newUsername() {
         System.out.println("Enter a username: ");
-        // String username = getInput.createAccountValidation(scan.next());
-
-        String username = getInput.createAccountValidation(scan.next());
-        return username;
+        return getInput.createAccountValidation(scan.next());
     }
 
     public String newPassword() {
         System.out.println("Enter a password: ");
-        // String username = getInput.createAccountValidation(scan.next());
         return getInput.createAccountValidation(scan.next());
     }
 
@@ -79,7 +75,7 @@ public class CreateAccount {
         return taken;
     }
 
-    public void printUsernameTaken() {
+    private void printUsernameTaken() {
         System.out.println("Username already in use");
     }
 }

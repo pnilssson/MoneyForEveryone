@@ -3,9 +3,9 @@ package main;
 import main.enums.Department;
 import main.enums.Role;
 import main.user.UserModel;
+import main.utils.ScannerClass;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class GetInputs {
 
@@ -15,7 +15,8 @@ public class GetInputs {
 
         while(incorrectInput) {
             try{
-                numberToReturn = new Scanner(System.in).nextInt();
+                // numberToReturn = new Scanner(System.in).nextInt();
+                numberToReturn = ScannerClass.scan.nextInt();
                 incorrectInput = false;
             } catch (InputMismatchException e) {
                 incorrectInput();
@@ -24,18 +25,18 @@ public class GetInputs {
         return numberToReturn;
     }
 
-    public Enum<Role> getRoleFromInput(){
-        int chosenRole = getIntFromInput();
+    public Enum<Role> getRoleFromInput(String input){
+        // int chosenRole = getIntFromInput();
         Enum<Role> roleToReturn;
-        switch (chosenRole) {
-            case 1:
+        switch (input) {
+            case "1":
                 roleToReturn = Role.ADMIN;
                 break;
-            case 2:
+            case "2":
                 roleToReturn = Role.USER;
                 break;
             default:
-                incorrectInput();
+                // incorrectInput();
                 roleToReturn = null;
                 break;
         }
@@ -43,24 +44,24 @@ public class GetInputs {
     }
 
 
-    public Enum<Department> getDepartmentFromInput(){
-        int chosenRole = getIntFromInput();
+    public Enum<Department> getDepartmentFromInput(String input){
+        // int chosenRole = getIntFromInput();
         Enum<Department> departmentToReturn;
-        switch (chosenRole) {
-            case 1:
+        switch (input) {
+            case "1":
                 departmentToReturn = Department.CEO;
                 break;
-            case 2:
+            case "2":
                 departmentToReturn = Department.HR;
                 break;
-            case 3:
+            case "3":
                 departmentToReturn = Department.DEVELOPER;
                 break;
-            case 4:
+            case "4":
                 departmentToReturn = Department.SUPPORT;
                 break;
             default:
-                incorrectInput();
+                // incorrectInput();
                 departmentToReturn = null;
                 break;
         }

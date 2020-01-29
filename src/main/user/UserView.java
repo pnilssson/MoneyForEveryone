@@ -1,20 +1,20 @@
 package main.user;
 
 import main.calendar.Calendar;
+import main.utils.ScannerClass;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class UserView {
-    Scanner scan = new Scanner(System.in);
 
     public String userMenuInput(UserModel user) {
         String choice;
         printUserMenu();
-        choice = scan.next();
+        choice = ScannerClass.scan.next();
         while(!correctUserMenuChoice(choice)) {
             System.out.println("Incorrect input");
-            choice = scan.next();
+            choice = ScannerClass.scan.next();
         }
         return choice;
     }
