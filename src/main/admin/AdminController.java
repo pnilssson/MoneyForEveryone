@@ -3,6 +3,7 @@ package main.admin;
 import main.GetInputs;
 import main.account.Account;
 import main.account.AccountList;
+import main.account.CreateAccount;
 import main.calendar.Calendar;
 import main.enums.Department;
 import main.account.RemoveAccount;
@@ -16,6 +17,7 @@ import java.util.Scanner;
 public class AdminController {
     private AdminView adminView = new AdminView();
     private RemoveAccount removeAccount = new RemoveAccount();
+    private CreateAccount createAccount = new CreateAccount();
     private GetInputs getInput = new GetInputs();
     private Calendar cal = new Calendar();
 
@@ -47,7 +49,7 @@ public class AdminController {
                 advanceCalendarAndPayout();
                 break;
             case "7":
-                //createAccount();
+                createAccount.createMenu(admin);
                 break;
             case "8":
                 removeAccount.removeMenu(admin);

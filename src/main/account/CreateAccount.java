@@ -12,33 +12,29 @@ public class CreateAccount {
     private GetInputs getInput = new GetInputs();
 
     public void createMenu(Account acc) {
-        Role role = null;
 
-        System.out.println("Enter a username: ");
-        String username = getInput.usernameInput(scan.next());
-        //TODO newUsername();
-
-        System.out.println("Enter a password: ");
-        String password = getInput.passwordInput(scan.next());
-        //TODO newPassword();
-
-        while(role == null) {
-            System.out.println("Choose a role for the new account: ");
-            System.out.println("1) Admin ");
-            System.out.println("2) User");
-            System.out.print("Your choice: ");
-
-            role = (Role) getInput.getRoleFromInput();
-        }
-
-        createAccount(role, username, password);
+        System.out.println("Username and Password must contain at least 1 letter and 1 number: ");
+        /*
+        Role role = newRole();
+        String username = newUsername();
+        String password = newPassword();
+        */
+        createAccount(newRole(), newUsername(), newPassword());
     }
 
     public void createAccount(Enum<Role> role, String username, String password) {
-        if(role.equals(Role.USER)) {
-            AccountList.accountArrayList.add(createUser(username, password));
+        if(username.length() > 0 && password.length() > 0) {
+            if(checkIfUsernameIsAvailable(username)) {
+                if(role.equals(Role.USER)) {
+                    AccountList.accountArrayList.add(createUser(username, password));
+                } else {
+                    AccountList.accountArrayList.add(createAdmin(username, password));
+                }
+            } else {
+                printUsernameTaken();
+            }
         } else {
-            AccountList.accountArrayList.add(createAdmin(username, password));
+            getInput.incorrectInput();
         }
     }
 
@@ -48,5 +44,42 @@ public class CreateAccount {
 
     public UserModel createUser(String username, String password) {
         return new UserModel(username, password);
+    }
+
+    public Role newRole() {
+        System.out.println("Choose a role for the new account: ");
+        System.out.println("1) Admin ");
+        System.out.println("2) User");
+        System.out.print("Your choice: ");
+
+        return (Role) getInput.getRoleFromInput();
+    }
+
+    public String newUsername() {
+        System.out.println("Enter a username: ");
+        // String username = getInput.createAccountValidation(scan.next());
+
+        String username = getInput.createAccountValidation(scan.next());
+        return username;
+    }
+
+    public String newPassword() {
+        System.out.println("Enter a password: ");
+        // String username = getInput.createAccountValidation(scan.next());
+        return getInput.createAccountValidation(scan.next());
+    }
+
+
+    public boolean checkIfUsernameIsAvailable(String username) {
+        boolean taken = false;
+        for(Account acc : AccountList.accountArrayList) {
+            taken = !acc.getUsername().equals(username);
+            break;
+        }
+        return taken;
+    }
+
+    public void printUsernameTaken() {
+        System.out.println("Username already in use");
     }
 }

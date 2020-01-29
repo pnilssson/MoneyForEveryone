@@ -71,12 +71,29 @@ public class GetInputs {
         System.out.println("Incorrect input");
     }
 
-
     public String usernameInput(String username) {
-        return username.toLowerCase();
+        return username;
     }
 
-    public String passwordInput(String password) {
-        return password;
+    public String passwordInput(String username) {
+        return username;
+    }
+
+    public String createAccountValidation(String inputToValidate) {
+        boolean hasLetter = false;
+        boolean hasNumber = false;
+
+        for(Character c : inputToValidate.toCharArray()) {
+            if(Character.isDigit(c)) {
+                hasNumber = true;
+            }
+            if(Character.isLetter(c)) {
+                hasLetter = true;
+            }
+        }
+        if( hasNumber && hasLetter) {
+            return inputToValidate;
+        }
+        return "";
     }
 }
