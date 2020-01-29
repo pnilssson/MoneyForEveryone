@@ -4,7 +4,7 @@ import main.enums.*;
 
 public abstract class Account {
     private int accountId;
-    private static int idCounter = -1;
+    private static int idCounter = 0;
     private int salary;
     private int balance;
     private Enum<Role> role;

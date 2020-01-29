@@ -15,5 +15,6 @@ public class UserViewTest {
     @Test
     public void testCorrectMenuChoice() {
         Assert.assertTrue("UserUI menuchoice not returning correct value", userView.correctUserMenuChoice("1"));
+        Assert.assertFalse("UserUI menuchoice not returning correct value", userView.correctUserMenuChoice("k"));
     }
 }

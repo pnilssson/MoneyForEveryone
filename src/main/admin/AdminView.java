@@ -60,12 +60,17 @@ public class AdminView {
 
     public void displayUserDetails() {
         for(Account acc: AccountList.accountArrayList) {
+            System.out.println("Id: " + acc.getAccountId());
             System.out.println("User: " + acc.getUsername());
             System.out.println("Password: " + acc.getPassword());
             System.out.println("Role: " + acc.getRole());
             System.out.println("Department: " + acc.getDepartment());
             System.out.println("");
         }
+    }
+
+    public void printNoRequests() {
+        System.out.println("There is currently no requests.");
     }
 
     public void displayUserWithChange(UserModel user) {
@@ -87,5 +92,13 @@ public class AdminView {
         System.out.println("1) Approve");
         System.out.println("2) Decline");
         System.out.print("Your choice: ");
+    }
+
+    public void printIdToManage() {
+        System.out.print("Chose user ID to manage: ");
+    }
+
+    public void printNoUserWithId() {
+        System.out.println("No user with this Id.");
     }
 }
