@@ -6,6 +6,7 @@ import main.calendar.Calendar;
 import main.enums.Role;
 import main.user.UserModel;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -14,7 +15,6 @@ public class AdminView {
 
     public String adminMenuInput(AdminModel admin) {
         String choice;
-        // System.out.println("Welcome " + admin.getUsername() + "!");
         printUserMenu();
         choice = scan.next();
         while(!correctAdminMenuChoice(choice)) {
@@ -42,12 +42,6 @@ public class AdminView {
         System.out.println("Your current role is: " + admin.getRole());
     }
 
-/*
-    public void printRemoveAccountConditions() {
-        System.out.println("Please confirm deletion of account by entering username and password");
-    }
-*/
-
     public void printUserMenu() {
         System.out.println(Calendar.cal.getTime());
         System.out.println("What would you like to do?");
@@ -74,18 +68,24 @@ public class AdminView {
         }
     }
 
-    public void displayRequests() {
-        for(Account acc: AccountList.accountArrayList) {
-            UserModel user;
-            if(acc.getRole() == Role.USER) {
-                user = (UserModel) acc;
-                if(user.getDepartment() != user.getRequestedNewDepartment()) {
-                    System.out.println(user.getUsername() + " has requested " + user.getRequestedNewDepartment() + " as new department.");
-                }
-                if(user.getSalary() != user.getRequestedSalary()) {
-                    System.out.println(user.getUsername() + " has requested " + user.getRequestedSalary() + " as new salary, current salary: " + user.getSalary());
-                }
-            }
-        }
+    public void displayUserWithChange(UserModel user) {
+        System.out.println("ID: " + user.getAccountId() + ") " + user.getUsername() + " has new requests. ");
+    }
+
+    public void displayNewDepartment(UserModel user) {
+        System.out.println(user.getUsername() + " has requested " + user.getRequestedNewDepartment() + " as new department.");
+        printApproveOrDecline();
+    }
+
+    public void displayNewSalary(UserModel user) {
+        System.out.println(user.getUsername() + " has requested " + user.getRequestedSalary() + " as new salary, current salary: " + user.getSalary());
+        printApproveOrDecline();
+    }
+
+    public void printApproveOrDecline() {
+        System.out.println("Do you:");
+        System.out.println("1) Approve");
+        System.out.println("2) Decline");
+        System.out.print("Your choice: ");
     }
 }

@@ -6,16 +6,18 @@ import main.account.AccountList;
 import main.calendar.Calendar;
 import main.enums.Department;
 import main.account.RemoveAccount;
+import main.enums.Role;
 import main.user.UserModel;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class AdminController {
     private AdminView adminView = new AdminView();
     private RemoveAccount removeAccount = new RemoveAccount();
-
-    Calendar cal = new Calendar();
+    private GetInputs getInput = new GetInputs();
+    private Calendar cal = new Calendar();
 
     public void initAdminMenu(AdminModel admin) {
         admin.setLogin(true);
@@ -39,7 +41,7 @@ public class AdminController {
                 adminView.displayUserDetails();
                 break;
             case "5":
-                adminView.displayRequests();
+                manageRequests();
                 break;
             case "6":
                 advanceCalendarAndPayout();
@@ -63,5 +65,91 @@ public class AdminController {
         for (Account acc : AccountList.accountArrayList) {
             acc.setBalance(acc.getBalance() + acc.getSalary());
         }
+    }
+
+    public void manageRequests() {
+        boolean anyRequests = displayAllRequests();
+        if(anyRequests) {
+            displaySpecificRequests(getInput.getIntFromInput());
+        }
+    }
+
+    public boolean displayAllRequests() {
+        UserModel user;
+        boolean anyRequests = false;
+        for(Account acc: AccountList.accountArrayList) {
+            if(acc.getRole() == Role.USER) {
+                user = (UserModel) acc;
+                if(user.getDepartment() != user.getRequestedNewDepartment() || user.getSalary() != user.getRequestedSalary()) {
+                    anyRequests = true;
+                    adminView.displayUserWithChange(user);
+                }
+            }
+        }
+        if(anyRequests) {
+            System.out.print("Chose user ID to manage: ");
+            return true;
+        }
+        return false;
+    }
+
+    public void displaySpecificRequests(int Id) {
+        UserModel user;
+        boolean userFound = false;
+        for(Account acc: AccountList.accountArrayList) {
+            if(acc.getAccountId() == Id) {
+                userFound = true;
+                user = (UserModel) acc;
+                if(user.getDepartment() != user.getRequestedNewDepartment()) {
+                    acceptOrDeclineDepartmentRequest(user);
+                }
+                if(user.getSalary() != user.getRequestedSalary()) {
+                    acceptOrDeclineSalaryRequest(user);
+                }
+            }
+        }
+        if(!userFound) {
+            System.out.println("No user with this Id.");
+        }
+    }
+
+    public void acceptOrDeclineSalaryRequest(UserModel user) {
+        adminView.displayNewSalary(user);
+        int adminInput = getInput.getIntFromInput();
+        if (adminInput == 1) {
+            acceptSalaryChange(user);
+        } else if (adminInput == 2) {
+            declineSalaryChange(user);
+        } else {
+            System.out.println("Incorrect input.");
+        }
+    }
+
+    public void acceptSalaryChange(UserModel user) {
+        user.setSalary(user.getRequestedSalary());
+    }
+
+    public void declineSalaryChange(UserModel user) {
+        user.setRequestedSalary(user.getSalary());
+    }
+
+    public void acceptOrDeclineDepartmentRequest(UserModel user) {
+        adminView.displayNewDepartment(user);
+        int adminInput = getInput.getIntFromInput();
+        if(adminInput == 1) {
+            acceptDepartmentChange(user);
+        } else if (adminInput == 2){
+            declineDepartmentChange(user);
+        } else {
+            System.out.println("Incorrect input.");
+        }
+    }
+
+    public void acceptDepartmentChange(UserModel user) {
+        user.setDepartment(user.getRequestedNewDepartment());
+    }
+
+    public void declineDepartmentChange(UserModel user) {
+        user.setRequestedNewDepartment(user.getDepartment());
     }
 }
