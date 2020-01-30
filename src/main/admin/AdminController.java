@@ -10,6 +10,8 @@ import main.enums.Role;
 import main.user.UserModel;
 import main.utils.ScannerClass;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class AdminController {
@@ -68,51 +70,52 @@ public class AdminController {
     }
 
     public void manageRequests() {
-        boolean anyRequests = displayAllRequests();
-        if (anyRequests) {
-            String input = getInput.checkIfInputIsInt(ScannerClass.scan.next());
-            if(input != null) {
-                displaySpecificRequests(getInput.convertStringToInt(input));
-            } else {
-                getInput.incorrectInput();
-            }
+        if (displayAllRequests()) {
+            checkInputForSpecificRequest(getInput.checkIfInputIsInt(ScannerClass.scan.next()));
         } else {
             adminView.printNoRequests();
         }
     }
 
     public boolean displayAllRequests() {
-        UserModel user;
-        boolean anyRequests = false;
+        ArrayList<Boolean> haveRequests = new ArrayList<>();
+
         for(Account acc: AccountList.accountArrayList) {
             if(acc.getRole() == Role.USER) {
-                user = (UserModel) acc;
-                if(user.getDepartment() != user.getRequestedNewDepartment() || user.getSalary() != user.getRequestedSalary()) {
-                    anyRequests = true;
-                    adminView.displayUserWithChange(user);
-                }
+                haveRequests.add(checkUsersForRequests((UserModel) acc));
             }
         }
-        if(anyRequests) {
+
+        if(haveRequests.contains(true)) {
             adminView.printIdToManage();
             return true;
         }
         return false;
     }
 
+    public boolean checkUsersForRequests(UserModel user) {
+        if(user.getDepartment() != user.getRequestedNewDepartment() || user.getSalary() != user.getRequestedSalary()) {
+            adminView.displayUserWithChange(user);
+            return true;
+        }
+        return false;
+    }
+
+    public void checkInputForSpecificRequest(String input) {
+        if(input != null) {
+            displaySpecificRequests(getInput.convertStringToInt(input));
+        } else {
+            getInput.incorrectInput();
+        }
+    }
+
     public void displaySpecificRequests(int Id) {
-        UserModel user;
         boolean userFound = false;
+
         for(Account acc: AccountList.accountArrayList) {
             if(acc.getAccountId() == Id) {
                 userFound = true;
-                user = (UserModel) acc;
-                if(user.getDepartment() != user.getRequestedNewDepartment()) {
-                    acceptOrDeclineDepartmentRequest(user);
-                }
-                if(user.getSalary() != user.getRequestedSalary()) {
-                    acceptOrDeclineSalaryRequest(user);
-                }
+                DepartmentOrSalary((UserModel) acc);
             }
         }
         if(!userFound) {
@@ -120,17 +123,34 @@ public class AdminController {
         }
     }
 
+    public void DepartmentOrSalary(UserModel user) {
+        if(user.getDepartment() != user.getRequestedNewDepartment()) {
+            acceptOrDeclineDepartmentRequest(user);
+        }
+        if(user.getSalary() != user.getRequestedSalary()) {
+            acceptOrDeclineSalaryRequest(user);
+        }
+    }
+
     public void acceptOrDeclineSalaryRequest(UserModel user) {
         adminView.displayNewSalary(user);
-        String adminInput = getInput.checkIfInputIsInt(ScannerClass.scan.next());
-        if(adminInput != null) {
-            int adminIntInput = getInput.convertStringToInt(adminInput);
-            if (adminIntInput == 1) {
-                acceptSalaryChange(user);
-            } else if (adminIntInput == 2) {
-                declineSalaryChange(user);
-            } else {
-                getInput.incorrectInput();
+        checkInputForAcceptOrDenySalaryRequest(user, getInput.checkIfInputIsInt(ScannerClass.scan.next()));
+    }
+
+    public void checkInputForAcceptOrDenySalaryRequest(UserModel user, String input) {
+        if(input != null) {
+            int adminIntInput = getInput.convertStringToInt(input);
+
+            switch (adminIntInput) {
+                case 1:
+                    acceptSalaryChange(user);
+                    break;
+                case 2:
+                    declineSalaryChange(user);
+                    break;
+                default:
+                    getInput.incorrectInput();
+                    break;
             }
         } else {
             getInput.incorrectInput();
@@ -147,16 +167,23 @@ public class AdminController {
 
     public void acceptOrDeclineDepartmentRequest(UserModel user) {
         adminView.displayNewDepartment(user);
+        checkInputForAcceptOrDenyDepartmentRequest(user, getInput.checkIfInputIsInt(ScannerClass.scan.next()));
+    }
 
-        String adminInput = getInput.checkIfInputIsInt(ScannerClass.scan.next());
-        if(adminInput != null) {
-            int adminIntInput = getInput.convertStringToInt(adminInput);
-            if (adminIntInput == 1) {
-                acceptDepartmentChange(user);
-            } else if (adminIntInput == 2) {
-                declineDepartmentChange(user);
-            } else {
-                getInput.incorrectInput();
+    public void checkInputForAcceptOrDenyDepartmentRequest(UserModel user, String input) {
+        if(input != null) {
+            int adminIntInput = getInput.convertStringToInt(input);
+
+            switch (adminIntInput) {
+                case 1:
+                    acceptDepartmentChange(user);
+                    break;
+                case 2:
+                    declineDepartmentChange(user);
+                    break;
+                default:
+                    getInput.incorrectInput();
+                    break;
             }
         } else {
             getInput.incorrectInput();

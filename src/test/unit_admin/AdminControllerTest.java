@@ -32,6 +32,17 @@ public class AdminControllerTest {
     }
 
     @Test
+    public void testDisplaySpecificRequests() {
+        AccountList.accountArrayList.add(user);
+        user.setRequestedNewDepartment(Department.CEO);
+        Assert.assertTrue("Incorrect any Requests returned with new department requested", adminController.displayAllRequests());
+        adminController.acceptDepartmentChange(user);
+
+        AccountList.accountArrayList.clear();
+    }
+
+
+    @Test
     public void testDisplayRequestsWithNoRequests() {
         Assert.assertFalse("Incorrect any Requests returned with no changes", adminController.displayAllRequests());
 

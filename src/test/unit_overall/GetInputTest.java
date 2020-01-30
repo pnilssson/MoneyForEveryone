@@ -6,8 +6,6 @@ import main.enums.Role;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.InputMismatchException;
-
 public class GetInputTest {
     GetInputs getInput = new GetInputs();
 
@@ -39,8 +37,8 @@ public class GetInputTest {
     }
 
     @Test
-    public void getCEODepartmentFromInput() {
-        Assert.assertEquals("CEO department not returned", Department.CEO, getInput.getDepartmentFromInput("1"));
+    public void getDeveloperDepartmentFromInput() {
+        Assert.assertEquals("Developer department not returned", Department.DEVELOPER, getInput.getDepartmentFromInput("1"));
     }
 
     @Test
@@ -49,13 +47,13 @@ public class GetInputTest {
     }
 
     @Test
-    public void getDeveloperDepartmentFromInput() {
-        Assert.assertEquals("Developer department not returned", Department.DEVELOPER,getInput.getDepartmentFromInput("3"));
+    public void getSupportDepartmentFromInput() {
+        Assert.assertEquals("Support department not returned", Department.SUPPORT,getInput.getDepartmentFromInput("3"));
     }
 
     @Test
-    public void getSupportDepartmentFromInput() {
-        Assert.assertEquals("Support department not returned", Department.SUPPORT,getInput.getDepartmentFromInput("4"));
+    public void getCEODepartmentFromInput() {
+        Assert.assertEquals("CEO department not returned", Department.CEO,getInput.getDepartmentFromInput("4"));
     }
 
     @Test

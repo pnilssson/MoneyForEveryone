@@ -43,16 +43,16 @@ public class GetInputs {
         Enum<Department> departmentToReturn;
         switch (input) {
             case "1":
-                departmentToReturn = Department.CEO;
+                departmentToReturn = Department.DEVELOPER;
                 break;
             case "2":
                 departmentToReturn = Department.HR;
                 break;
             case "3":
-                departmentToReturn = Department.DEVELOPER;
+                departmentToReturn = Department.SUPPORT;
                 break;
             case "4":
-                departmentToReturn = Department.SUPPORT;
+                departmentToReturn = Department.CEO;
                 break;
             default:
                 incorrectInput();

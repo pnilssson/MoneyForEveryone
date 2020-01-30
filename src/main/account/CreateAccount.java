@@ -52,12 +52,12 @@ public class CreateAccount {
     }
 
     public String newUsername() {
-        System.out.println("Enter a username: ");
+        System.out.print("Enter a username: ");
         return getInput.createAccountValidation(scan.next());
     }
 
     public String newPassword() {
-        System.out.println("Enter a password: ");
+        System.out.print("Enter a password: ");
         return getInput.createAccountValidation(scan.next());
     }
 

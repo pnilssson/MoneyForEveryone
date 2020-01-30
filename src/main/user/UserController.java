@@ -47,7 +47,7 @@ public class UserController {
 
     public void requestNewDepartment(UserModel user) {
         Enum<Department> newDepartment;
-        Enum<Department> currentDepartment = user.getDepartment();
+        // Enum<Department> currentDepartment = user.getDepartment();
         userView.printNewRequestedDepartment();
         newDepartment = getInput.getDepartmentFromInput(ScannerClass.scan.next());
         submitDepartmentChange(user, newDepartment);
