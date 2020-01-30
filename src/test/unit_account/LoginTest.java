@@ -15,9 +15,19 @@ public class LoginTest {
     Account account = user;
 
     @Test
-    public void loginTest() {
-        Assert.assertNull("Login method not returning null when wrong username/password used", login.login(user.getUsername(), user.getPassword()));
+    public void loginSuccessTest() {
         AccountList.accountArrayList.add(user);
-        Assert.assertEquals("Login method not returning account type", account, login.login(user.getUsername(), user.getPassword()));
+        Assert.assertEquals("Login method not returning account type", account, login.login("user1","qwerty"));
+    }
+
+    @Test
+    public void loginWithNoUserTest() {
+        Assert.assertNull("Login method not returning null when wrong username/password used", login.login("user1", "qwerty"));
+    }
+
+    @Test
+    public void loginWrongInputTest() {
+        AccountList.accountArrayList.add(user);
+        Assert.assertNull("Login method not returning null when wrong username/password used", login.login("user2", "qwerty"));
     }
 }

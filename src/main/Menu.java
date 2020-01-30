@@ -24,7 +24,8 @@ public class Menu {
                 login.loginMenu();
                 return true;
             case "0":
-                System.exit(0);
+                // System.exit(0);
+                return false;
             default:
                 System.out.println("Incorrect input");
                 return true;

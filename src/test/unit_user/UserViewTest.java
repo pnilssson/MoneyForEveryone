@@ -8,13 +8,12 @@ public class UserViewTest {
     UserView userView = new UserView();
 
     @Test
-    public void testUserMenuInput() {
-        //TODO
+    public void testCorrectMenuChoice() {
+        Assert.assertTrue("UserUI menu choice not returning correct value", userView.correctUserMenuChoice("1"));
     }
 
     @Test
-    public void testCorrectMenuChoice() {
-        Assert.assertTrue("UserUI menuchoice not returning correct value", userView.correctUserMenuChoice("1"));
-        Assert.assertFalse("UserUI menuchoice not returning correct value", userView.correctUserMenuChoice("k"));
+    public void testInccorectMenuChoice() {
+        Assert.assertFalse("UserUI menu choice not returning correct value", userView.correctUserMenuChoice("k"));
     }
 }

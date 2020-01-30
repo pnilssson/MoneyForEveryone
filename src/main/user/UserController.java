@@ -50,13 +50,20 @@ public class UserController {
         Enum<Department> currentDepartment = user.getDepartment();
         userView.printNewRequestedDepartment();
         newDepartment = getInput.getDepartmentFromInput(ScannerClass.scan.next());
-        if(currentDepartment != newDepartment) {
-            submitDepartmentChange(user, newDepartment);
-        }
+        submitDepartmentChange(user, newDepartment);
     }
 
-    public void submitDepartmentChange(UserModel user, Enum<Department> newDepartment) {
+    public boolean submitDepartmentChange(UserModel user, Enum<Department> newDepartment) {
+        if(checkSameDepartment(user, newDepartment)) {
+            printSameDepartment();
+            return false;
+        }
         user.setRequestedNewDepartment(newDepartment);
+        return true;
+    }
+
+    public boolean checkSameDepartment(UserModel user, Enum<Department> newDepartment) {
+        return newDepartment == user.getDepartment();
     }
 
     public void requestNewSalary(UserModel user) {
@@ -71,7 +78,23 @@ public class UserController {
         }
     }
 
-    public void submitSalaryChange(UserModel user, int newSalary) {
+    public boolean submitSalaryChange(UserModel user, int newSalary) {
+        if(checkSameSalary(user, newSalary)) {
+            printSameSalary();
+            return false;
+        }
         user.setRequestedSalary(newSalary);
+        return true;
+    }
+
+    public boolean checkSameSalary(UserModel user, int newSalary) {
+        return newSalary == user.getSalary();
+    }
+
+    public void printSameDepartment() {
+        System.out.println("You cannot request to change to the same department you are in");
+    }
+    public void printSameSalary() {
+        System.out.println("You cannot request to change your salary to one you already have");
     }
 }

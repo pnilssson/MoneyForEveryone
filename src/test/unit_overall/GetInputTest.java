@@ -11,7 +11,7 @@ public class GetInputTest {
 
     @Test
     public void testGetIntFromInput() {
-        Assert.assertEquals("Incorrect int returned", "1", getInput.getIntFromInput("1"));
+        Assert.assertEquals("Incorrect int returned", "1", getInput.checkIfInputIsInt("1"));
     }
 
     @Test

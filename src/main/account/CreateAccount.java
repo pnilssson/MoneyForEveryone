@@ -63,12 +63,12 @@ public class CreateAccount {
 
 
     public boolean checkIfUsernameIsAvailable(String username) {
-        boolean taken = false;
         for(Account acc : AccountList.accountArrayList) {
-            taken = !acc.getUsername().equals(username);
-            break;
+            if(acc.getUsername().equals(username)) {
+                return false;
+            }
         }
-        return taken;
+        return true;
     }
 
     private void printUsernameTaken() {

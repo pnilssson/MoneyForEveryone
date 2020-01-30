@@ -10,11 +10,31 @@ public class CreateAccountTest {
     CreateAccount createAccount = new CreateAccount();
 
     @Test
-    public void testCreateAccount() {
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 0);
-        createAccount.createAccount(Role.USER, "user123", "test123");
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 1);
-        createAccount.createAccount(Role.ADMIN, "admin123", "test123");
-        Assert.assertEquals("Incorrect amount of account", AccountList.accountArrayList.size(), 2);
+    public void testCreateUserAccount() {
+        Assert.assertEquals("Incorrect amount of account", 0, AccountList.accountArrayList.size());
+        createAccount.createAccount(Role.USER, "user1", "test123");
+        Assert.assertEquals("Incorrect amount of account", 1, AccountList.accountArrayList.size());
+
+        AccountList.accountArrayList.clear();
+    }
+
+    @Test
+    public void testCreateAdminAccount() {
+        Assert.assertEquals("Incorrect amount of account", 0, AccountList.accountArrayList.size());
+        createAccount.createAccount(Role.ADMIN, "admin1", "test123");
+        Assert.assertEquals("Incorrect amount of account", 1, AccountList.accountArrayList.size());
+
+        AccountList.accountArrayList.clear();
+    }
+
+    @Test
+    public void testTakenUsername() {
+        Assert.assertEquals("Incorrect amount of account", 0, AccountList.accountArrayList.size());
+        createAccount.createAccount(Role.USER, "wictor1", "test123");
+        Assert.assertEquals("Incorrect amount of account", 1, AccountList.accountArrayList.size());
+        createAccount.createAccount(Role.USER, "wictor1", "test123");
+        Assert.assertEquals("Incorrect amount of account", 1, AccountList.accountArrayList.size());
+
+        AccountList.accountArrayList.clear();
     }
 }

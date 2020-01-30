@@ -18,13 +18,23 @@ public class AdminControllerTest {
         Assert.assertEquals("Incorrect balance from user", 0, user.getBalance());
         adminController.advanceCalendarAndPayout();
         Assert.assertEquals("Incorrect salary added to balance", 10, user.getBalance());
+
+        AccountList.accountArrayList.clear();
     }
 
     @Test
     public void testDisplayAllRequests() {
         AccountList.accountArrayList.add(user);
-        Assert.assertFalse("Incorrect anyRequests returned with no changes", adminController.displayAllRequests());
         user.setRequestedNewDepartment(Department.CEO);
-        Assert.assertTrue("Incorrect anyRequests returned with new department requested", adminController.displayAllRequests());
+        Assert.assertTrue("Incorrect any Requests returned with new department requested", adminController.displayAllRequests());
+
+        AccountList.accountArrayList.clear();
+    }
+
+    @Test
+    public void testDisplayRequestsWithNoRequests() {
+        Assert.assertFalse("Incorrect any Requests returned with no changes", adminController.displayAllRequests());
+
+        AccountList.accountArrayList.clear();
     }
 }

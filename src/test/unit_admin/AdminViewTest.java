@@ -9,7 +9,11 @@ public class AdminViewTest {
 
     @Test
     public void testCorrectMenuChoice() {
-        Assert.assertTrue("UserUI menuchoice not returning correct value", adminView.correctAdminMenuChoice("1"));
-        Assert.assertFalse("UserUI menuchoice not returning correct value", adminView.correctAdminMenuChoice("k"));
+        Assert.assertTrue("AdminUI menu choice not returning correct value", adminView.correctAdminMenuChoice("1"));
+    }
+
+    @Test
+    public void testInccorectMenuChoice() {
+        Assert.assertFalse("AdminUI menu choice not returning correct value", adminView.correctAdminMenuChoice("k"));
     }
 }
