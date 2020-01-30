@@ -3,17 +3,13 @@ package main.admin;
 import main.account.Account;
 import main.account.AccountList;
 import main.calendar.Calendar;
-import main.enums.Role;
 import main.user.UserModel;
 import main.utils.ScannerClass;
-
-import javax.jws.soap.SOAPBinding;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class AdminView {
 
-    public String adminMenuInput(AdminModel admin) {
+    public String adminMenuInput() {
         String choice;
         printUserMenu();
         choice = ScannerClass.scan.next();
@@ -26,8 +22,7 @@ public class AdminView {
 
     public boolean correctAdminMenuChoice(String input) {
         String[] choices = {"1", "2", "3", "4", "5", "6", "7", "8", "0"};
-        boolean listContainsChoice;
-        return listContainsChoice = Arrays.asList(choices).contains(input);
+        return Arrays.asList(choices).contains(input);
     }
 
     public void printAdminBalance(AdminModel admin) {

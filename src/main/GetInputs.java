@@ -2,15 +2,12 @@ package main;
 
 import main.enums.Department;
 import main.enums.Role;
-import main.user.UserModel;
-import main.utils.ScannerClass;
-
 import java.util.InputMismatchException;
 
 public class GetInputs {
 
-     public String getIntFromInput(String input) {
-         int convertInputToInt = 0;
+     public String checkIfInputIsInt(String input) {
+         int convertInputToInt;
          try{
              convertInputToInt = Integer.parseInt(input);
              input = String.valueOf(convertInputToInt);

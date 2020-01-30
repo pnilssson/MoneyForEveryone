@@ -14,11 +14,6 @@ public class CreateAccount {
     public void createMenu() {
 
         System.out.println("Username and Password must contain at least 1 letter and 1 number: ");
-        /*
-        Role role = newRole();
-        String username = newUsername();
-        String password = newPassword();
-        */
         createAccount(newRole(), newUsername(), newPassword());
     }
 

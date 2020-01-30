@@ -22,7 +22,7 @@ public class AdminController {
     public void initAdminMenu(AdminModel admin) {
         admin.setLogin(true);
         do {
-            callChosenMethod(adminView.adminMenuInput(admin), admin);
+            callChosenMethod(adminView.adminMenuInput(), admin);
         } while(admin.isLogin());
     }
 
@@ -70,7 +70,7 @@ public class AdminController {
     public void manageRequests() {
         boolean anyRequests = displayAllRequests();
         if (anyRequests) {
-            String input = getInput.getIntFromInput(ScannerClass.scan.next());
+            String input = getInput.checkIfInputIsInt(ScannerClass.scan.next());
             if(input != null) {
                 displaySpecificRequests(getInput.convertStringToInt(input));
             } else {
@@ -122,7 +122,7 @@ public class AdminController {
 
     public void acceptOrDeclineSalaryRequest(UserModel user) {
         adminView.displayNewSalary(user);
-        String adminInput = getInput.getIntFromInput(ScannerClass.scan.next());
+        String adminInput = getInput.checkIfInputIsInt(ScannerClass.scan.next());
         if(adminInput != null) {
             int adminIntInput = getInput.convertStringToInt(adminInput);
             if (adminIntInput == 1) {
@@ -147,8 +147,8 @@ public class AdminController {
 
     public void acceptOrDeclineDepartmentRequest(UserModel user) {
         adminView.displayNewDepartment(user);
-        //int adminInput = getInput.getIntFromInput(ScannerClass.scan.next());
-        String adminInput = getInput.getIntFromInput(ScannerClass.scan.next());
+
+        String adminInput = getInput.checkIfInputIsInt(ScannerClass.scan.next());
         if(adminInput != null) {
             int adminIntInput = getInput.convertStringToInt(adminInput);
             if (adminIntInput == 1) {

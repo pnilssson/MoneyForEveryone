@@ -13,7 +13,7 @@ public class UserController {
     public void initUserMenu(UserModel user) {
         user.setLogin(true);
         do {
-            callChosenMethod(userView.userMenuInput(user), user);
+            callChosenMethod(userView.userMenuInput(), user);
         } while(user.isLogin());
     }
 
@@ -60,9 +60,9 @@ public class UserController {
     }
 
     public void requestNewSalary(UserModel user) {
-        int newIntSalary = 0;
+        int newIntSalary;
         userView.printNewRequestedNewSalary();
-        String newSalary = getInput.getIntFromInput(ScannerClass.scan.next());
+        String newSalary = getInput.checkIfInputIsInt(ScannerClass.scan.next());
         if(newSalary != null) {
             newIntSalary = getInput.convertStringToInt(newSalary);
             submitSalaryChange(user, newIntSalary);
