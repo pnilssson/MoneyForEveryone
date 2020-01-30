@@ -13,7 +13,7 @@ public class AdminViewTest {
     }
 
     @Test
-    public void testInccorectMenuChoice() {
+    public void testIncorrectMenuChoice() {
         Assert.assertFalse("AdminUI menu choice not returning correct value", adminView.correctAdminMenuChoice("k"));
     }
 }

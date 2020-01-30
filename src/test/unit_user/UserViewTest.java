@@ -13,7 +13,7 @@ public class UserViewTest {
     }
 
     @Test
-    public void testInccorectMenuChoice() {
+    public void testIncorrectMenuChoice() {
         Assert.assertFalse("UserUI menu choice not returning correct value", userView.correctUserMenuChoice("k"));
     }
 }
