@@ -20,9 +20,4 @@ public class LoginTest {
         AccountList.accountArrayList.add(user);
         Assert.assertEquals("Login method not returning account type", account, login.login(user.getUsername(), user.getPassword()));
     }
-
-    @Test
-    public void testLaunchMainMenu() {
-        //TODO
-    }
 }

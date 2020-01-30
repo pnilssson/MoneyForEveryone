@@ -17,7 +17,6 @@ public class GetInputs {
          } catch (InputMismatchException | NumberFormatException | NullPointerException e) {
             input = null;
          }
-
          return input;
     }
 
@@ -26,7 +25,6 @@ public class GetInputs {
     }
 
     public Enum<Role> getRoleFromInput(String input){
-        // int chosenRole = getIntFromInput();
         Enum<Role> roleToReturn;
         switch (input) {
             case "1":
@@ -45,7 +43,6 @@ public class GetInputs {
 
 
     public Enum<Department> getDepartmentFromInput(String input){
-        // int chosenRole = getIntFromInput();
         Enum<Department> departmentToReturn;
         switch (input) {
             case "1":

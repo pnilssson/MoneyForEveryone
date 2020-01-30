@@ -27,9 +27,4 @@ public class AdminControllerTest {
         user.setRequestedNewDepartment(Department.CEO);
         Assert.assertTrue("Incorrect anyRequests returned with new department requested", adminController.displayAllRequests());
     }
-
-    @Test
-    public void testRequestedChanges() {
-
-    }
 }

@@ -1,6 +1,8 @@
 package test.unit_overall;
 
 import main.GetInputs;
+import main.enums.Department;
+import main.enums.Role;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -9,17 +11,17 @@ public class GetInputTest {
 
     @Test
     public void testGetIntFromInput() {
-        //TODO
+        Assert.assertEquals("Incorrect int returned", "1", getInput.getIntFromInput("1"));
     }
 
     @Test
     public void testGetRoleFromInput() {
-        //TODO
+        Assert.assertEquals("Incorrect role returned", Role.ADMIN, getInput.getRoleFromInput("1"));
     }
 
     @Test
     public void getDepartmentFromInput() {
-        //TODO
+        Assert.assertEquals("Incorrect department returned", Department.HR,getInput.getDepartmentFromInput("2"));
     }
 
     @Test
