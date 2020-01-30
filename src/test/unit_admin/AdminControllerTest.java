@@ -1,6 +1,6 @@
 package test.unit_admin;
 
-import main.account.AccountList;
+import main.utils.AccountList;
 import main.admin.AdminController;
 import main.enums.Department;
 import main.enums.Role;

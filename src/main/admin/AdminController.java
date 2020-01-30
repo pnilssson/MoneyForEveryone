@@ -1,8 +1,8 @@
 package main.admin;
 
-import main.GetInputs;
+import main.utils.GetInputs;
 import main.account.Account;
-import main.account.AccountList;
+import main.utils.AccountList;
 import main.account.CreateAccount;
 import main.calendar.Calendar;
 import main.account.RemoveAccount;

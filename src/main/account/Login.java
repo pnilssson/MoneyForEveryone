@@ -1,12 +1,12 @@
-package main;
+package main.account;
 
-import main.account.Account;
-import main.account.AccountList;
+import main.utils.AccountList;
 import main.admin.AdminController;
 import main.admin.AdminModel;
 import main.enums.Role;
 import main.user.UserController;
 import main.user.UserModel;
+import main.utils.GetInputs;
 import main.utils.ScannerClass;
 
 

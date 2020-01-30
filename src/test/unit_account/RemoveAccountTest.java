@@ -1,11 +1,8 @@
 package test.unit_account;
 
-import main.account.Account;
-import main.account.AccountList;
-import main.account.CreateAccount;
+import main.utils.AccountList;
 import main.account.RemoveAccount;
 import main.admin.AdminModel;
-import main.enums.Role;
 import main.user.UserModel;
 import org.junit.Assert;
 import org.junit.Test;

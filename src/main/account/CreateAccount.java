@@ -1,6 +1,7 @@
 package main.account;
 
-import main.GetInputs;
+import main.utils.AccountList;
+import main.utils.GetInputs;
 import main.admin.AdminModel;
 import main.enums.Role;
 import main.user.UserModel;

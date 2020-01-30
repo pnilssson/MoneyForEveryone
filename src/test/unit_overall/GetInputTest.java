@@ -1,6 +1,6 @@
 package test.unit_overall;
 
-import main.GetInputs;
+import main.utils.GetInputs;
 import main.enums.Department;
 import main.enums.Role;
 import org.junit.Assert;

@@ -1,7 +1,7 @@
 package main.admin;
 
 import main.account.Account;
-import main.account.AccountList;
+import main.utils.AccountList;
 import main.calendar.Calendar;
 import main.user.UserModel;
 import main.utils.ScannerClass;

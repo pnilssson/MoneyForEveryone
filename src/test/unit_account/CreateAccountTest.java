@@ -1,6 +1,6 @@
 package test.unit_account;
 
-import main.account.AccountList;
+import main.utils.AccountList;
 import main.account.CreateAccount;
 import main.enums.Role;
 import org.junit.Assert;

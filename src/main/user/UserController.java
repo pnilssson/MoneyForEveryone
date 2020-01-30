@@ -1,6 +1,6 @@
 package main.user;
 
-import main.GetInputs;
+import main.utils.GetInputs;
 import main.enums.Department;
 import main.account.RemoveAccount;
 import main.utils.ScannerClass;
