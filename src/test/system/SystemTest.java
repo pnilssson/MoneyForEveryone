@@ -19,7 +19,6 @@ public class SystemTest {
     Login login = new Login();
     UserModel user = new UserModel(10, 0, Role.USER, Department.DEVELOPER, "user1", "qwerty");
     AdminModel admin = new AdminModel(10, 0, Role.ADMIN, Department.SUPPORT, "admin1", "qwerty");
-    // Account account = user;
     UserController userController = new UserController();
     AdminView adminView = new AdminView();
     AdminController adminController = new AdminController();
@@ -74,7 +73,6 @@ public class SystemTest {
         Assert.assertEquals("Incorrect salary added to balance", 10, user.getBalance());
 
         // Requirement 2 - Create account, at least 1 letter and 1 number
-        Assert.assertEquals("Incorrect amount of account", 2, AccountList.accountArrayList.size());
         UserModel user2 = createAccount.createUser("user2", "qwerty1");
         AccountList.accountArrayList.add(user2);
         Assert.assertTrue("User is not added to account list", AccountList.accountArrayList.contains(user2));

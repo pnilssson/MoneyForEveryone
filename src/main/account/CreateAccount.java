@@ -19,7 +19,7 @@ public class CreateAccount {
     }
 
     public void createAccount(Enum<Role> role, String username, String password) {
-        if(username.equals("") || password.equals("")) {
+        if(username == null || password == null) {
             getInput.incorrectInput();
         } else {
             if (checkIfUsernameIsAvailable(username)) {
