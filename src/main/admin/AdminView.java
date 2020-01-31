@@ -1,6 +1,8 @@
 package main.admin;
 
 import main.account.Account;
+import main.enums.Department;
+import main.enums.Role;
 import main.utils.AccountList;
 import main.calendar.Calendar;
 import main.user.UserModel;
@@ -53,15 +55,12 @@ public class AdminView {
     }
 
 
-    public void displayUserDetails() {
-        for(Account acc: AccountList.accountArrayList) {
-            System.out.println("Id: " + acc.getAccountId());
-            System.out.println("User: " + acc.getUsername());
-            System.out.println("Password: " + acc.getPassword());
-            System.out.println("Role: " + acc.getRole());
-            System.out.println("Department: " + acc.getDepartment());
-            System.out.println("");
-        }
+    public void displayUserDetails(int accountId, String username, String password, Enum<Role> role, Enum<Department> department) {
+        System.out.println("Id: " + accountId);
+        System.out.println("User: " + username);
+        System.out.println("Password: " + password);
+        System.out.println("Role: " + role);
+        System.out.println("Department: " + department + "\n");
     }
 
     public void printNoRequests() {

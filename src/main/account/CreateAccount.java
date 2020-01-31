@@ -34,11 +34,11 @@ public class CreateAccount {
         }
     }
 
-    private AdminModel createAdmin(String username, String password) {
+    public AdminModel createAdmin(String username, String password) {
         return new AdminModel(username, password);
     }
 
-    private UserModel createUser(String username, String password) {
+    public UserModel createUser(String username, String password) {
         return new UserModel(username, password);
     }
 
