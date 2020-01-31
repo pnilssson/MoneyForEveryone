@@ -36,7 +36,7 @@ public class AdminView {
     }
 
     public void printAdminDepartment(AdminModel admin) {
-        System.out.println("Your current role is: " + admin.getRole());
+        System.out.println("Your current role is: " + admin.getDepartment());
     }
 
     public void printUserMenu() {
