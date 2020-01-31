@@ -87,5 +87,7 @@ public class SystemTest {
         UserModel user3 = createAccount.createUser("user2", "qwerty1");
         AccountList.accountArrayList.add(user3);
         removeAccount.removeAccount(user3, "user2", "qwerty");
+
+        AccountList.accountArrayList.clear();
     }
 }

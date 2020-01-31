@@ -26,6 +26,8 @@ public class SalaryTest {
 
         adminController.acceptSalaryChange(user);
         Assert.assertEquals("Salary is not changed", 20, user.getSalary());
+
+        AccountList.accountArrayList.clear();
     }
 
     @Test
@@ -40,5 +42,7 @@ public class SalaryTest {
 
         adminController.declineSalaryChange(user);
         Assert.assertEquals("Salary is not changed", 10, user.getSalary());
+
+        AccountList.accountArrayList.clear();
     }
 }

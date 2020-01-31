@@ -38,7 +38,6 @@ public class RemoveAccountTest {
         Assert.assertTrue("Admin is removed from account list", AccountList.accountArrayList.contains(admin));
 
         AccountList.accountArrayList.clear();
-
     }
 
     @Test
