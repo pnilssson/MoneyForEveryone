@@ -6,6 +6,8 @@ import main.enums.Role;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Random;
+
 public class GetInputTest {
     GetInputs getInput = new GetInputs();
 
@@ -78,6 +80,6 @@ public class GetInputTest {
 
     @Test
     public void testInvalidInputToValidate() {
-        Assert.assertEquals("password returned", "", getInput.createAccountValidation("password"));
+        Assert.assertNull("password returned", getInput.createAccountValidation("password"));
     }
 }

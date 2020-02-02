@@ -26,6 +26,8 @@ public class DepartmentTest {
 
         adminController.acceptDepartmentChange(user);
         Assert.assertEquals("Department is not changed", Department.HR, user.getDepartment());
+
+        AccountList.accountArrayList.clear();
     }
 
     @Test
@@ -40,5 +42,7 @@ public class DepartmentTest {
 
         adminController.declineDepartmentChange(user);
         Assert.assertEquals("Department is not changed", Department.DEVELOPER, user.getDepartment());
+
+        AccountList.accountArrayList.clear();
     }
 }

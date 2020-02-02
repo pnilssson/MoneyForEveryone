@@ -19,7 +19,7 @@ public class CreateAccount {
     }
 
     public void createAccount(Enum<Role> role, String username, String password) {
-        if(username.equals("") || password.equals("")) {
+        if(username == null || password == null) {
             getInput.incorrectInput();
         } else {
             if (checkIfUsernameIsAvailable(username)) {
@@ -34,11 +34,11 @@ public class CreateAccount {
         }
     }
 
-    private AdminModel createAdmin(String username, String password) {
+    public AdminModel createAdmin(String username, String password) {
         return new AdminModel(username, password);
     }
 
-    private UserModel createUser(String username, String password) {
+    public UserModel createUser(String username, String password) {
         return new UserModel(username, password);
     }
 

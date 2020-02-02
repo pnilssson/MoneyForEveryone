@@ -1,5 +1,6 @@
 package main.admin;
 
+import main.enums.Department;
 import main.utils.GetInputs;
 import main.account.Account;
 import main.utils.AccountList;
@@ -40,7 +41,7 @@ public class AdminController {
                 adminView.printAdminDepartment(admin);
                 break;
             case "4":
-                adminView.displayUserDetails();
+                checkUserDetails();
                 break;
             case "5":
                 manageRequests();
@@ -62,11 +63,26 @@ public class AdminController {
         }
     }
 
+    public void checkUserDetails() {
+        for(Account acc: AccountList.accountArrayList) {
+            adminView.displayUserDetails(acc.getAccountId(), acc.getUsername(), acc.getPassword(), acc.getRole(), acc.getDepartment());
+        }
+    }
+
     public void advanceCalendarAndPayout() {
         cal.getCal().add(GregorianCalendar.MONTH, 1);
+        int totalCost = 0;
+
         for (Account acc : AccountList.accountArrayList) {
             acc.setBalance(acc.getBalance() + acc.getSalary());
+            totalCost = totalCost + acc.getSalary();
         }
+
+        printSalaryCost(totalCost);
+    }
+
+    public void printSalaryCost(int totalCost) {
+        System.out.println("Total amount payed out in salaries for this month was: " + totalCost);
     }
 
     public void manageRequests() {

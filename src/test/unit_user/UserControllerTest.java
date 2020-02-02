@@ -4,7 +4,6 @@ import main.enums.Department;
 import main.enums.Role;
 import main.user.UserController;
 import main.user.UserModel;
-import main.utils.ScannerClass;
 import org.junit.Assert;
 import org.junit.Test;
 

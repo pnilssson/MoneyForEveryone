@@ -89,6 +89,6 @@ public class GetInputs {
         if( hasNumber && hasLetter) {
             return inputToValidate;
         }
-        return "";
+        return null;
     }
 }
